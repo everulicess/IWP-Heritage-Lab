@@ -32,6 +32,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b659e44b-5e58-4db3-9925-e90a2ece3afc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Codex",
+                    "type": "Button",
+                    "id": "b54502f0-92d3-4311-b216-38bfb196e6a9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -122,32 +140,26 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Menu",
-            "id": "eac80b46-8874-4bd3-a5bd-d20c9be56dcf",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "e486c653-6c79-4181-ba8d-c583908eb677",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "77b39242-1402-4c1a-a60b-b940a09130f9",
-                    "path": "",
+                    "id": "817a4c19-e86b-4016-9e39-7532ba726df3",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7201e80-3384-4617-86e7-4ba6e399fded",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Codex",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -158,9 +170,18 @@
             "id": "2abc4e52-be61-42e4-bc17-4bdae99669c7",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Close Overlay",
                     "type": "Button",
                     "id": "9f859e87-1d54-4037-bd46-7d61be0b7424",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Codex",
+                    "type": "Button",
+                    "id": "6e3af342-5730-4b40-af7e-2a26df3ccf23",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -171,11 +192,22 @@
                 {
                     "name": "",
                     "id": "e177a8a2-4e08-434f-a88d-fc422b46f043",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Close Overlay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9437e8bb-c97b-4e3b-8e9a-6d2ec31c8e11",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Codex",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -15,7 +15,14 @@ public static class Events
 //Change the value of said variables before firing the event in the corresponding script
 
 //When anything that changes the map in any way happens, call this event
-public class ExampleEvent : NotificationEvent
+public class ExampleEvent : Event
 {
     
 }
+#region CODEX EVENTS 
+//CODEX EVENTS
+public class UnlockEntry : Event
+{
+    public CodexEntry Entry;
+}
+#endregion

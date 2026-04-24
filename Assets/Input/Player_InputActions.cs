@@ -118,6 +118,24 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""b659e44b-5e58-4db3-9925-e90a2ece3afc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Codex"",
+                    ""type"": ""Button"",
+                    ""id"": ""b54502f0-92d3-4311-b216-38bfb196e6a9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -208,32 +226,26 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Menu"",
-            ""id"": ""eac80b46-8874-4bd3-a5bd-d20c9be56dcf"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""e486c653-6c79-4181-ba8d-c583908eb677"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""77b39242-1402-4c1a-a60b-b940a09130f9"",
-                    ""path"": """",
+                    ""id"": ""817a4c19-e86b-4016-9e39-7532ba726df3"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7201e80-3384-4617-86e7-4ba6e399fded"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Codex"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -244,9 +256,18 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             ""id"": ""2abc4e52-be61-42e4-bc17-4bdae99669c7"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Close Overlay"",
                     ""type"": ""Button"",
                     ""id"": ""9f859e87-1d54-4037-bd46-7d61be0b7424"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Codex"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e3af342-5730-4b40-af7e-2a26df3ccf23"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -257,11 +278,22 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e177a8a2-4e08-434f-a88d-fc422b46f043"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Close Overlay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9437e8bb-c97b-4e3b-8e9a-6d2ec31c8e11"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Codex"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -275,18 +307,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        // Menu
-        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Codex = m_Player.FindAction("Codex", throwIfNotFound: true);
         // Overlay
         m_Overlay = asset.FindActionMap("Overlay", throwIfNotFound: true);
-        m_Overlay_Newaction = m_Overlay.FindAction("New action", throwIfNotFound: true);
+        m_Overlay_CloseOverlay = m_Overlay.FindAction("Close Overlay", throwIfNotFound: true);
+        m_Overlay_Codex = m_Overlay.FindAction("Codex", throwIfNotFound: true);
     }
 
     ~@Player_InputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, Player_InputActions.Player.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Menu.enabled, "This will cause a leak and performance issues, Player_InputActions.Menu.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Overlay.enabled, "This will cause a leak and performance issues, Player_InputActions.Overlay.Disable() has not been called.");
     }
 
@@ -366,6 +397,8 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Codex;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -389,6 +422,14 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Codex".
+        /// </summary>
+        public InputAction @Codex => m_Wrapper.m_Player_Codex;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -424,6 +465,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Codex.started += instance.OnCodex;
+            @Codex.performed += instance.OnCodex;
+            @Codex.canceled += instance.OnCodex;
         }
 
         /// <summary>
@@ -444,6 +491,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Codex.started -= instance.OnCodex;
+            @Codex.performed -= instance.OnCodex;
+            @Codex.canceled -= instance.OnCodex;
         }
 
         /// <summary>
@@ -478,106 +531,11 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
 
-    // Menu
-    private readonly InputActionMap m_Menu;
-    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
-    private readonly InputAction m_Menu_Newaction;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "Menu".
-    /// </summary>
-    public struct MenuActions
-    {
-        private @Player_InputActions m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public MenuActions(@Player_InputActions wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "Menu/Newaction".
-        /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Menu; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="MenuActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="MenuActions" />
-        public void AddCallbacks(IMenuActions instance)
-        {
-            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="MenuActions" />
-        private void UnregisterCallbacks(IMenuActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MenuActions.UnregisterCallbacks(IMenuActions)" />.
-        /// </summary>
-        /// <seealso cref="MenuActions.UnregisterCallbacks(IMenuActions)" />
-        public void RemoveCallbacks(IMenuActions instance)
-        {
-            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="MenuActions.AddCallbacks(IMenuActions)" />
-        /// <seealso cref="MenuActions.RemoveCallbacks(IMenuActions)" />
-        /// <seealso cref="MenuActions.UnregisterCallbacks(IMenuActions)" />
-        public void SetCallbacks(IMenuActions instance)
-        {
-            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="MenuActions" /> instance referencing this action map.
-    /// </summary>
-    public MenuActions @Menu => new MenuActions(this);
-
     // Overlay
     private readonly InputActionMap m_Overlay;
     private List<IOverlayActions> m_OverlayActionsCallbackInterfaces = new List<IOverlayActions>();
-    private readonly InputAction m_Overlay_Newaction;
+    private readonly InputAction m_Overlay_CloseOverlay;
+    private readonly InputAction m_Overlay_Codex;
     /// <summary>
     /// Provides access to input actions defined in input action map "Overlay".
     /// </summary>
@@ -590,9 +548,13 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public OverlayActions(@Player_InputActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Overlay/Newaction".
+        /// Provides access to the underlying input action "Overlay/CloseOverlay".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_Overlay_Newaction;
+        public InputAction @CloseOverlay => m_Wrapper.m_Overlay_CloseOverlay;
+        /// <summary>
+        /// Provides access to the underlying input action "Overlay/Codex".
+        /// </summary>
+        public InputAction @Codex => m_Wrapper.m_Overlay_Codex;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -619,9 +581,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_OverlayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_OverlayActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @CloseOverlay.started += instance.OnCloseOverlay;
+            @CloseOverlay.performed += instance.OnCloseOverlay;
+            @CloseOverlay.canceled += instance.OnCloseOverlay;
+            @Codex.started += instance.OnCodex;
+            @Codex.performed += instance.OnCodex;
+            @Codex.canceled += instance.OnCodex;
         }
 
         /// <summary>
@@ -633,9 +598,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="OverlayActions" />
         private void UnregisterCallbacks(IOverlayActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @CloseOverlay.started -= instance.OnCloseOverlay;
+            @CloseOverlay.performed -= instance.OnCloseOverlay;
+            @CloseOverlay.canceled -= instance.OnCloseOverlay;
+            @Codex.started -= instance.OnCodex;
+            @Codex.performed -= instance.OnCodex;
+            @Codex.canceled -= instance.OnCodex;
         }
 
         /// <summary>
@@ -697,21 +665,20 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
-    }
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Menu" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="MenuActions.AddCallbacks(IMenuActions)" />
-    /// <seealso cref="MenuActions.RemoveCallbacks(IMenuActions)" />
-    public interface IMenuActions
-    {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Codex" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCodex(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Overlay" which allows adding and removing callbacks.
@@ -721,11 +688,18 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     public interface IOverlayActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Close Overlay" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnCloseOverlay(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Codex" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCodex(InputAction.CallbackContext context);
     }
 }

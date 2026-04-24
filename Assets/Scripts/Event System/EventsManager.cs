@@ -2,26 +2,26 @@ using System;
 using System.Collections.Generic;
 public static class EventsManager
 {
-    static readonly Dictionary<Type, Action<NotificationEvent>> _events = new Dictionary<Type, Action<NotificationEvent>>();
+    static readonly Dictionary<Type, Action<Event>> _events = new Dictionary<Type, Action<Event>>();
 
-    static readonly Dictionary<Delegate, Action<NotificationEvent>> _eventLookups = new Dictionary<Delegate, Action<NotificationEvent>>();
+    static readonly Dictionary<Delegate, Action<Event>> _eventLookups = new Dictionary<Delegate, Action<Event>>();
 
     //Registers a listener for a specific type of notification
-    public static void AddListener<T>(Action<T> evt) where T : NotificationEvent
+    public static void AddListener<T>(Action<T> evt) where T : Event
     {
         if (!_eventLookups.ContainsKey(evt))
         {
-            Action<NotificationEvent> newAction = (e) => evt((T)e);
+            Action<Event> newAction = (e) => evt((T)e);
             _eventLookups[evt] = newAction;
 
-            if (_events.TryGetValue(typeof(T), out Action<NotificationEvent> internalAction))
+            if (_events.TryGetValue(typeof(T), out Action<Event> internalAction))
                 _events[typeof(T)] = internalAction += newAction;
             else
                 _events[typeof(T)] = newAction;
         }
     }
     //Removes a previous added listener
-    public static void RemoveListener<T>(Action<T> evt) where T : NotificationEvent
+    public static void RemoveListener<T>(Action<T> evt) where T : Event
     {
         if (_eventLookups.TryGetValue(evt, out var action))
         {
@@ -37,7 +37,7 @@ public static class EventsManager
         }
     }
     //Broadcast the event for all the listeners registered for a specific type
-    public static void Broadcast(NotificationEvent evt)
+    public static void Broadcast(Event evt)
     {
         if (_events.TryGetValue(evt.GetType(), out var action))
             action.Invoke(evt);
@@ -50,4 +50,4 @@ public static class EventsManager
     }
 }
 //class for the notification events
-public class NotificationEvent{}
+public class Event{}

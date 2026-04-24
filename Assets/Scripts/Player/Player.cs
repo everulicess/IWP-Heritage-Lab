@@ -5,22 +5,29 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-
+    [Space]
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float groundDrag = 8f;
     [SerializeField] float airDrag = 1f;
 
+    [Space]
     [Header("Look")]
     [SerializeField] float mouseSensitivity = 0.1f;
     [SerializeField] float verticalClamp = 85f;
     [SerializeField] Transform cameraTransform;
 
+    [Space]
     [Header("Grpund Check")]
     [SerializeField] LayerMask groundMask;
     [SerializeField] float groundCheckDistance;
-    
+
+    [Space]
+    [Header("Interaction")]
+    [SerializeField] LayerMask interactableMask;
+    [SerializeField] float interactableDistance = 3.0f;
+
     Rigidbody _rb;
     Player_InputActions _input;
     CapsuleCollider _capsuleCollider;
@@ -29,6 +36,7 @@ public class Player : MonoBehaviour
     Vector2 _lookInput;
     float _cameraPitch;
     bool _isGrounded;
+    bool _isCursorVisible;
 
     private void Awake()
     {
@@ -53,17 +61,20 @@ public class Player : MonoBehaviour
         _input.Player.Look.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
         _input.Player.Look.canceled += ctx => _lookInput = Vector2.zero;
         _input.Player.Jump.performed += ctx => TryJump();
+        _input.Player.Interact.performed += ctx => TryInteracting();
+        _input.Player.Codex.performed += ctx => _isCursorVisible = true;
+        _input.Player.Codex.canceled += ctx => _isCursorVisible = false;
+        _input.Overlay.Codex.performed -= ctx => _isCursorVisible = true;
+        _input.Overlay.Codex.canceled -= ctx => _isCursorVisible = false;
     }
     private void OnDisable() => _input.Player.Disable();
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 
-    // Update is called once per frame
+    private void Start()
+    {
+    }
     void Update()
     {
+        HandleMouseVisibility();
         HandleLook();
         CheckGround();
         ApplyDrag();
@@ -72,6 +83,7 @@ public class Player : MonoBehaviour
     {
         HandleMovement();
     }
+#region LOOKING AND MOVEMENT
     void HandleLook()
     {
         transform.Rotate(Vector3.up, _lookInput.x * mouseSensitivity, Space.World);
@@ -118,5 +130,31 @@ public class Player : MonoBehaviour
         // Reset Y velocity before jumping for consistent jump height
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+    #endregion
+
+    void HandleMouseVisibility()
+    {
+        Cursor.visible = _isCursorVisible;
+        Cursor.lockState = _isCursorVisible ? CursorLockMode.Confined : CursorLockMode.Locked;
+
+        //if (_isCursorVisible)
+        //{ 
+        //    _input.Player.Disable();
+        //    _input.Overlay.Enable();
+        //}
+        //else 
+        //{ 
+        //    _input.Player.Enable(); 
+        //    _input.Overlay.Disable();
+        //}
+
+    }
+    void TryInteracting()
+    {
+        Ray ray = new(cameraTransform.position, cameraTransform.forward * 10);
+        if (Physics.Raycast(ray, out RaycastHit hit, interactableDistance, interactableMask))
+            if (hit.collider.TryGetComponent<EntryUnlocker>(out EntryUnlocker unlocker))
+                unlocker.UnlockEntry();
     }
 }
