@@ -25,4 +25,8 @@ public class UnlockEntry : Event
 {
     public CodexEntry Entry;
 }
+public class SelectEntry : Event
+{
+    public int PageEntryIndex;
+}
 #endregion
