@@ -137,24 +137,12 @@ public class Player : MonoBehaviour
     {
         Cursor.visible = _isCursorVisible;
         Cursor.lockState = _isCursorVisible ? CursorLockMode.Confined : CursorLockMode.Locked;
-
-        //if (_isCursorVisible)
-        //{ 
-        //    _input.Player.Disable();
-        //    _input.Overlay.Enable();
-        //}
-        //else 
-        //{ 
-        //    _input.Player.Enable(); 
-        //    _input.Overlay.Disable();
-        //}
-
     }
     void TryInteracting()
     {
         Ray ray = new(cameraTransform.position, cameraTransform.forward * 10);
         if (Physics.Raycast(ray, out RaycastHit hit, interactableDistance, interactableMask))
-            if (hit.collider.TryGetComponent<EntryUnlocker>(out EntryUnlocker unlocker))
-                unlocker.UnlockEntry();
+            if (hit.collider.TryGetComponent<InteractableObject>(out InteractableObject interactable))
+                interactable.Interact();
     }
 }
