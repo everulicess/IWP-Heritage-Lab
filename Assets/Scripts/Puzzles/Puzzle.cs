@@ -1,0 +1,93 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class Puzzle : MonoBehaviour
+{
+    [SerializeField] protected PuzzleID puzzleId = PuzzleID.None;
+    [SerializeField] protected bool startActive = true;
+
+    public PuzzleID PuzzleId => puzzleId;
+    public bool IsSolved { get; protected set; }
+    public bool IsActive { get; protected set; }
+
+    // Pieces register themselves — no inspector list to maintain
+    readonly List<PuzzlePiece> pieces = new();
+    public IReadOnlyList<PuzzlePiece> Pieces => pieces;
+    public int PieceCount => pieces.Count;
+    public int SolvedPieceCount
+    {
+        get
+        {
+            int count = 0;
+            foreach (var p in pieces) if (p != null && p.IsInCorrectState) count++;
+            return count;
+        }
+    }
+
+    public void RegisterPiece(PuzzlePiece piece)
+    {
+        if (piece == null || pieces.Contains(piece)) return;
+        pieces.Add(piece);
+        piece.OnStateChanged += HandlePieceChanged;
+    }
+
+    public void UnregisterPiece(PuzzlePiece piece)
+    {
+        if (piece == null) return;
+        if (pieces.Remove(piece))
+            piece.OnStateChanged -= HandlePieceChanged;
+    }
+
+    protected virtual void Start()
+    {
+        if (startActive) StartPuzzle();
+    }
+
+    public virtual void StartPuzzle()
+    {
+        if (IsSolved || IsActive) return;
+        IsActive = true;
+        OnStart();
+        BroadcastState(PuzzleState.Started);
+    }
+
+    protected void Solve()
+    {
+        if (IsSolved) return;
+        IsSolved = true;
+        IsActive = false;
+        OnSolved();
+        BroadcastState(PuzzleState.Solved);
+        Debug.Log("PUZZLE HAS BEEN SOLVED");
+    }
+
+    protected void Fail()
+    {
+        if (!IsActive) return;
+        OnFailed();
+        BroadcastState(PuzzleState.Failed);
+    }
+
+    protected virtual void HandlePieceChanged(PuzzlePiece piece) => EvaluateState();
+
+    protected void EvaluateState()
+    {
+        if (!IsActive || IsSolved) return;
+        if (CheckSolution()) Solve();
+    }
+
+    protected virtual bool CheckSolution()
+    {
+        if (pieces.Count == 0) return false;
+        foreach (var p in pieces)
+            if (p == null || !p.IsInCorrectState) return false;
+        return true;
+    }
+
+    protected virtual void OnStart() { }
+    protected virtual void OnSolved() { }
+    protected virtual void OnFailed() { }
+
+    protected void BroadcastState(PuzzleState state) =>
+        EventsManager.Broadcast(new PuzzleStateChanged { puzzle = this, state = state });
+}

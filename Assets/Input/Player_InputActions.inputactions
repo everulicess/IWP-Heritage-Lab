@@ -50,6 +50,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Primary Action",
+                    "type": "Button",
+                    "id": "34ff47c0-51a9-41ed-a216-21d1c4338d82",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary Action",
+                    "type": "Button",
+                    "id": "eaed109c-fc08-4d40-b3e8-f7d1070db8de",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -162,15 +180,37 @@
                     "action": "Codex",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d9e49f4-f1aa-4fb3-a5ea-35fa85ca4187",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14b77013-f9a1-4eb4-8cb7-e3dbc33416ec",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Overlay",
+            "name": "UI",
             "id": "2abc4e52-be61-42e4-bc17-4bdae99669c7",
             "actions": [
                 {
-                    "name": "Close Overlay",
+                    "name": "Cancel",
                     "type": "Button",
                     "id": "9f859e87-1d54-4037-bd46-7d61be0b7424",
                     "expectedControlType": "",
@@ -179,9 +219,54 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Codex",
+                    "name": "Next Page",
                     "type": "Button",
-                    "id": "6e3af342-5730-4b40-af7e-2a26df3ccf23",
+                    "id": "ab840658-029a-4d54-8b4f-c0b711fcb51c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Previous Page",
+                    "type": "Button",
+                    "id": "866d6aae-47f8-40b1-8c8e-6c0869b563a6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "5b1ec4db-01db-4f9c-9095-8218c7b19453",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "7140d65c-77d0-4219-9f10-ea19b83d2784",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Close Menu",
+                    "type": "Button",
+                    "id": "00c17d2e-a188-45e7-8b21-28260a64193e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skip Tutorial",
+                    "type": "Button",
+                    "id": "174e7367-9029-4438-b1f9-d3a8b874ba3b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -196,18 +281,134 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Close Overlay",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "9437e8bb-c97b-4e3b-8e9a-6d2ec31c8e11",
+                    "id": "b867c04d-9829-490a-847d-d6ddd8c581ab",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2537ae9c-b71a-48c0-8c03-c7c52f8cc483",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92ea98b8-e6ce-4333-ab5f-e1b800b94a82",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1518609-5141-4df3-b5e3-7b5fbe21012d",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Codex",
+                    "action": "Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd7fad55-1655-4f0f-b884-784a793c66b2",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip Tutorial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ebdc964-885c-4cd4-8d8d-08c189f67134",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c58b9e23-f239-4fcb-8423-1f295a4079da",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d0ef2c7-12a2-47d5-9cb2-f65ca9c04236",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf8384e5-ebb1-4593-b93b-9cdafbde2a92",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Global",
+            "id": "b2a31c29-efde-435f-9cbd-6f0c7ee8f941",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "8d019fce-972d-4371-b3c5-1a88a5e4ab83",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3da2b01e-a8ea-408f-a97e-3afada4e02f1",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -19,6 +19,15 @@ public class ExampleEvent : Event
 {
     
 }
+
+#region GAME STATE EVENTS
+public class OnGameStateChanged : Event
+{
+    public GameState NewState;
+    public GameState PreviousState;
+}
+#endregion
+
 #region CODEX EVENTS 
 //CODEX EVENTS
 public class UnlockEntry : Event
@@ -28,5 +37,28 @@ public class UnlockEntry : Event
 public class SelectEntry : Event
 {
     public int PageEntryIndex;
+}
+public class OnCodexOpened : Event
+{
+}
+public class OnCodexClosed : Event
+{
+}
+
+#endregion
+
+#region TUTORIAL EVENTS
+public class OnNotifyTutorialStepEvent : Event
+{
+    public string stepToNotify;
+}
+
+#endregion
+
+#region PUZZLE EVENTS
+public class PuzzleStateChanged : Event
+{
+    public Puzzle puzzle;
+    public PuzzleState state;
 }
 #endregion

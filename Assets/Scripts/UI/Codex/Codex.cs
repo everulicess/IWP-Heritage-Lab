@@ -31,18 +31,54 @@ public class Codex : MonoBehaviour
     {
         EventsManager.AddListener<UnlockEntry>(OnUnlockEntry);
         EventsManager.AddListener<SelectEntry>(OnSelectEntry);
+
+        EventsManager.AddListener<OnGameStateChanged>(OnGameStateChanged);
+
+        InputManager.Instance.UI.NextPage.performed += ctx => OnNextPage();
+        InputManager.Instance.UI.PreviousPage.performed += ctx => OnPreviousPage();
+
     }
 
     private void OnDisable()
     {
         EventsManager.RemoveListener<UnlockEntry>(OnUnlockEntry);
         EventsManager.RemoveListener<SelectEntry>(OnSelectEntry);
+
+        EventsManager.RemoveListener<OnGameStateChanged>(OnGameStateChanged);
+
     }
     private void Start()
     {
         availablePages.Add(indexPage);
+        pagesSection.SetActive(false);
         ShowEntry(currentIndex);
     }
+    void OnGameStateChanged(OnGameStateChanged evt)
+    {
+
+        if (evt.NewState == GameState.Codex)
+        {
+            OpenCodex();
+        }
+        else if (evt.PreviousState == GameState.Codex)
+        {
+            CloseCodex();
+        }
+        currentIndex = 0;
+        ShowEntry(currentIndex);
+    }
+
+    public void CloseCodex()
+    {
+        pagesSection.SetActive(false);
+        EventsManager.Broadcast(new OnCodexClosed());
+    }
+
+    private void OpenCodex()
+    {
+        pagesSection.SetActive(true);
+    }
+
     void OnUnlockEntry(UnlockEntry evt)
     {
         Debug.Log($"UNLOCKING ENTRY {evt.Entry.name}");
@@ -67,6 +103,16 @@ public class Codex : MonoBehaviour
     }
     public void ShowEntry(int index)
     {
+        if (index > availablePages.Count - 1 )
+        {
+            currentIndex = availablePages.Count - 1;
+            return;
+        }
+        if ( index < 0)
+        {
+            currentIndex = 0;
+            return;
+        }
         foreach (var page in availablePages)
             page.gameObject.SetActive(false);
 
@@ -90,12 +136,5 @@ public class Codex : MonoBehaviour
     public void OnPreviousPage()
     {
         ShowEntry(--currentIndex);
-    }
-    public void ToggleCodex()
-    {
-        pagesSection.SetActive(!pagesSection.activeInHierarchy);
-        currentIndex =0;
-        ShowEntry(currentIndex);
-
     }
 }

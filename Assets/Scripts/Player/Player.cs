@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform cameraTransform;
 
     [Space]
-    [Header("Grpund Check")]
+    [Header("Grpound Check")]
     [SerializeField] LayerMask groundMask;
     [SerializeField] float groundCheckDistance;
 
@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     [SerializeField] float interactableDistance = 3.0f;
 
     Rigidbody _rb;
-    Player_InputActions _input;
     CapsuleCollider _capsuleCollider;
 
     Vector2 _moveInput;
@@ -48,29 +47,37 @@ public class Player : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider>();
         if (_capsuleCollider == null) Debug.LogError($"Missing Component {nameof(CapsuleCollider)} in {gameObject.name}");
 
-        _input = new Player_InputActions(); //Input Action asset
-
         //Check for missing references
         if (cameraTransform == null) Debug.LogError($"Missing Reference {nameof(cameraTransform)} in {gameObject.name}");
     }
     private void OnEnable()
     {
-        _input.Player.Enable();
-        _input.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
-        _input.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
-        _input.Player.Look.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
-        _input.Player.Look.canceled += ctx => _lookInput = Vector2.zero;
-        _input.Player.Jump.performed += ctx => TryJump();
-        _input.Player.Interact.performed += ctx => TryInteracting();
-        _input.Player.Codex.performed += ctx => _isCursorVisible = true;
-        _input.Player.Codex.canceled += ctx => _isCursorVisible = false;
-        _input.Overlay.Codex.performed -= ctx => _isCursorVisible = true;
-        _input.Overlay.Codex.canceled -= ctx => _isCursorVisible = false;
-    }
-    private void OnDisable() => _input.Player.Disable();
+        InputManager.Instance.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        InputManager.Instance.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
+        InputManager.Instance.Player.Look.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
+        InputManager.Instance.Player.Look.canceled += ctx => _lookInput = Vector2.zero;
+        InputManager.Instance.Player.Jump.performed += ctx => TryJump();
+        InputManager.Instance.Player.Interact.performed += ctx => TryInteracting();
+        InputManager.Instance.Player.Codex.performed += ctx => EventsManager.Broadcast(new OnCodexOpened());
+        InputManager.Instance.UI.CloseMenu.performed += ctx => EventsManager.Broadcast(new OnCodexClosed());
 
-    private void Start()
+        InputManager.Instance.Global.Pause.canceled += ctx => GameManager.Instance.TogglePause();
+
+
+    }
+    private void OnDisable()
     {
+        InputManager.Instance.Player.Move.performed -= ctx => _moveInput = ctx.ReadValue<Vector2>();
+        InputManager.Instance.Player.Move.canceled -= ctx => _moveInput = Vector2.zero;
+        InputManager.Instance.Player.Look.performed -= ctx => _lookInput = ctx.ReadValue<Vector2>();
+        InputManager.Instance.Player.Look.canceled -= ctx => _lookInput = Vector2.zero;
+        InputManager.Instance.Player.Jump.performed -= ctx => TryJump();
+        InputManager.Instance.Player.Interact.performed -= ctx => TryInteracting();
+        InputManager.Instance.Player.Codex.performed -= ctx => EventsManager.Broadcast(new OnCodexOpened());
+        InputManager.Instance.UI.CloseMenu.performed -= ctx => EventsManager.Broadcast(new OnCodexClosed());
+
+
+        InputManager.Instance.Global.Pause.canceled -= ctx => GameManager.Instance.TogglePause();
     }
     void Update()
     {
@@ -110,14 +117,7 @@ public class Player : MonoBehaviour
     {
         float capsuleHalfHeight = _capsuleCollider.height / 2f;
 
-        _isGrounded = Physics.SphereCast(
-            transform.position,
-            0.4f,
-            Vector3.down,
-            out _,
-            capsuleHalfHeight + groundCheckDistance,
-            groundMask
-        );
+        _isGrounded = Physics.SphereCast( transform.position, 0.4f, Vector3.down, out _, capsuleHalfHeight + groundCheckDistance, groundMask);
     }
     void ApplyDrag()
     {
@@ -135,8 +135,9 @@ public class Player : MonoBehaviour
 
     void HandleMouseVisibility()
     {
-        Cursor.visible = _isCursorVisible;
-        Cursor.lockState = _isCursorVisible ? CursorLockMode.Confined : CursorLockMode.Locked;
+        bool showCursor = GameManager.Instance.currentState != GameState.Gameplay;
+        Cursor.visible = showCursor;
+        Cursor.lockState = showCursor ? CursorLockMode.Confined : CursorLockMode.Locked;
     }
     void TryInteracting()
     {
