@@ -13,7 +13,8 @@ public enum PuzzleID
 {
     None,
     StatuePuzzle,
-    ExamplePuzzle
+    ExamplePuzzle,
+    LightPuzzle
 }
 public enum PuzzleState
 {
