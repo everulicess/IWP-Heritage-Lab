@@ -5,7 +5,9 @@ public enum GameState
     Codex,
     Paused,
     Cutscene,
-    Tutorial
+    Tutorial,
+    Finished,
+    WinningScreen
 }
 
 #region PUZZLES
@@ -18,8 +20,29 @@ public enum PuzzleID
 }
 public enum PuzzleState
 {
+    None,
     Started,
     Solved,
     Failed
+}
+//StudyPuzzle
+public enum CrestID
+{
+    None,
+    Horenken,
+    Alberda,
+    Bentinck,
+    VanWijhe,
+    VanReede,
+    VanNassau,
+    DeWraat,
+    VanBrederode,
+    VanDeelen,
+    VanRaesfeld,
+    Ripperda,
+    Rengers,
+    Clant,
+    Berum,
+    Tamminga,
 }
 #endregion

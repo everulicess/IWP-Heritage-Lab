@@ -1,9 +1,16 @@
 using UnityEngine;
 
+[RequireComponent(typeof(InteractableObject))]
 public class EntryUnlocker : MonoBehaviour
 {
     [SerializeField] CodexEntry entry;
-    public void UnlockEntry()
+    InteractableObject interactableObject;
+    private void OnEnable()
+    {
+        interactableObject = GetComponent<InteractableObject>();
+        interactableObject.OnInteraction.AddListener(UnlockEntry);
+    }
+    void UnlockEntry()
     {
         Debug.Log($"UNLOCKING ENTRY {entry}");
 

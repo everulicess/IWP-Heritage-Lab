@@ -61,4 +61,14 @@ public class PuzzleStateChanged : Event
     public Puzzle puzzle;
     public PuzzleState state;
 }
+//Srudy Puzzle
+public class CarriedCrest : Event
+{
+    public CrestID carriedID = CrestID.None;
+}
 #endregion
+
+public class OnGateInteraction : Event
+{
+    public bool GateOpened;
+}

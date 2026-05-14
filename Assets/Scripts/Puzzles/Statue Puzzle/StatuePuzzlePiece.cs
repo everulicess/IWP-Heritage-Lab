@@ -10,19 +10,16 @@ public class StatuePuzzlePiece : PuzzlePiece
 
     [Tooltip("Degrees rotated per interaction.")]
     [SerializeField] float rotationStep = 45f;
-
-
-    Renderer renderer;
+    new Renderer renderer;
     public override bool IsInCorrectState{
-    get
-    {
+        get
+        {
         if (target == null) return false;
         Vector3 toTarget = (target.position - transform.position).normalized;
         return Vector3.Angle(transform.forward, toTarget) <= angleTolerance;
+        }
     }
-}
-
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         renderer = GetComponentInChildren<Renderer>();

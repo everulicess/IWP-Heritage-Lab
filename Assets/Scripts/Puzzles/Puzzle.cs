@@ -1,14 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Puzzle : MonoBehaviour
 {
+
     [SerializeField] protected PuzzleID puzzleId = PuzzleID.None;
     [SerializeField] protected bool startActive = true;
+
+    public PuzzleState state = PuzzleState.None;
 
     public PuzzleID PuzzleId => puzzleId;
     public bool IsSolved { get; protected set; }
     public bool IsActive { get; protected set; }
+
+    public event Action<Puzzle> OnStateChanged;
 
     // Pieces register themselves — no inspector list to maintain
     readonly List<PuzzlePiece> pieces = new();
@@ -22,6 +28,10 @@ public abstract class Puzzle : MonoBehaviour
             foreach (var p in pieces) if (p != null && p.IsInCorrectState) count++;
             return count;
         }
+    }
+    protected virtual void Awake()
+    {
+        GameManager.Instance.RegisterPuzzle(this);
     }
 
     public void RegisterPiece(PuzzlePiece piece)
@@ -47,8 +57,9 @@ public abstract class Puzzle : MonoBehaviour
     {
         if (IsSolved || IsActive) return;
         IsActive = true;
+        state = PuzzleState.Started;
         OnStart();
-        BroadcastState(PuzzleState.Started);
+        BroadcastState(state);
     }
 
     protected void Solve()
@@ -56,16 +67,18 @@ public abstract class Puzzle : MonoBehaviour
         if (IsSolved) return;
         IsSolved = true;
         IsActive = false;
+        state = PuzzleState.Solved;
         OnSolved();
-        BroadcastState(PuzzleState.Solved);
+        BroadcastState(state);
         Debug.Log("PUZZLE HAS BEEN SOLVED");
     }
 
     protected void Fail()
     {
         if (!IsActive) return;
+        state = PuzzleState.Failed;
         OnFailed();
-        BroadcastState(PuzzleState.Failed);
+        BroadcastState(state);
     }
 
     protected virtual void HandlePieceChanged(PuzzlePiece piece) => EvaluateState();

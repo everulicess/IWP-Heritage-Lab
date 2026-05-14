@@ -30,9 +30,17 @@ public class InputManager : MonoBehaviour
                 SwitchToUI();
                 break;
             case GameState.Paused:
+                SwitchToUI();
+                break;
             case GameState.Cutscene:
+                SwitchToUI();
+                break;
             case GameState.Tutorial:
-                DisableAll();
+            case GameState.Finished:
+                SwitchToGameplay();
+                break;
+            case GameState.WinningScreen:
+                SwitchToUI();
                 break;
         }
     }
@@ -55,12 +63,16 @@ public class InputManager : MonoBehaviour
     {
         _actions.UI.Disable();
         _actions.Player.Enable();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SwitchToUI()
     {
         _actions.Player.Disable();
         _actions.UI.Enable();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void DisableAll()

@@ -62,8 +62,6 @@ public class Player : MonoBehaviour
         InputManager.Instance.UI.CloseMenu.performed += ctx => EventsManager.Broadcast(new OnCodexClosed());
 
         InputManager.Instance.Global.Pause.canceled += ctx => GameManager.Instance.TogglePause();
-
-
     }
     private void OnDisable()
     {
@@ -81,7 +79,6 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        HandleMouseVisibility();
         HandleLook();
         CheckGround();
         ApplyDrag();
@@ -132,13 +129,6 @@ public class Player : MonoBehaviour
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     #endregion
-
-    void HandleMouseVisibility()
-    {
-        bool showCursor = GameManager.Instance.currentState != GameState.Gameplay;
-        Cursor.visible = showCursor;
-        Cursor.lockState = showCursor ? CursorLockMode.Confined : CursorLockMode.Locked;
-    }
     void TryInteracting()
     {
         Ray ray = new(cameraTransform.position, cameraTransform.forward * 10);
