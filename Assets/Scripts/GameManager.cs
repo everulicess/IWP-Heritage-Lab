@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     void OnCodexClosed(OnCodexClosed evt)
     {
         SetState(GameState.Gameplay);
+        Debug.Log($"PREVIOUS GAME STATE {previousState}");
+
     }
 
     public void RegisterPuzzle(Puzzle piece)

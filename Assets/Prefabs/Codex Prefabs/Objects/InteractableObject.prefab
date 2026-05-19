@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9082110015134573319}
   - component: {fileID: 3578206660385680755}
   - component: {fileID: 527541804210965429}
+  - component: {fileID: 6358666719196579488}
   m_Layer: 6
   m_Name: InteractableObject
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8658944c600aae46b06531afaa1b57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntryUnlocker
-  entry: {fileID: 11400000, guid: 95f9c726fb2b096479b381272ae21787, type: 2}
+  entry: {fileID: 11400000, guid: 623eaa97f88248542807df541ee71837, type: 2}
 --- !u!65 &3578206660385680755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +97,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6358666719196579488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7263906605142640718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0606e55355926f478643a082f617ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExaminableObject
+  objectToExamine: {fileID: 8253701213567588811}
 --- !u!1 &8253701213567588811
 GameObject:
   m_ObjectHideFlags: 0

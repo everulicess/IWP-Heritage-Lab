@@ -12,9 +12,12 @@ public class UIMenus : MonoBehaviour
     [SerializeField] GameObject winningScreen;
     [SerializeField] GameObject gateScreen;
     [SerializeField] TextMeshProUGUI gateTextHolder;
+    [Header("Pause")]
+    [SerializeField] GameObject pauseOverlay;
     private void OnEnable()
     {
         EventsManager.AddListener<OnGateInteraction>(OnFinishedGameInteraction);
+        EventsManager.AddListener<OnGameStateChanged>(OnGameStateChanged);
 
         winningScreen.SetActive(false);
         gateScreen.SetActive(false);
@@ -42,5 +45,13 @@ public class UIMenus : MonoBehaviour
         gateTextHolder.text = "Puzzles not finished yet! ";
         yield return new WaitForSeconds(2.0f);
         gateScreen.SetActive(false);
+    }
+    void OnGameStateChanged(OnGameStateChanged evt)
+    {
+        if (evt.NewState == GameState.Paused)
+        {
+
+        }
+
     }
 }

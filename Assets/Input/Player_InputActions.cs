@@ -357,6 +357,15 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Examine"",
+                    ""type"": ""Value"",
+                    ""id"": ""b481d0ef-8b0d-4e3c-b7d3-c6863b1f8c45"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -469,6 +478,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Previous Page"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60886ffa-6d23-4070-94cd-d7c06d76a746"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Examine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -521,6 +541,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
         m_UI_CloseMenu = m_UI.FindAction("Close Menu", throwIfNotFound: true);
         m_UI_SkipTutorial = m_UI.FindAction("Skip Tutorial", throwIfNotFound: true);
+        m_UI_Examine = m_UI.FindAction("Examine", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
@@ -775,6 +796,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Click;
     private readonly InputAction m_UI_CloseMenu;
     private readonly InputAction m_UI_SkipTutorial;
+    private readonly InputAction m_UI_Examine;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -814,6 +836,10 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/SkipTutorial".
         /// </summary>
         public InputAction @SkipTutorial => m_Wrapper.m_UI_SkipTutorial;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Examine".
+        /// </summary>
+        public InputAction @Examine => m_Wrapper.m_UI_Examine;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -861,6 +887,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @SkipTutorial.started += instance.OnSkipTutorial;
             @SkipTutorial.performed += instance.OnSkipTutorial;
             @SkipTutorial.canceled += instance.OnSkipTutorial;
+            @Examine.started += instance.OnExamine;
+            @Examine.performed += instance.OnExamine;
+            @Examine.canceled += instance.OnExamine;
         }
 
         /// <summary>
@@ -893,6 +922,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @SkipTutorial.started -= instance.OnSkipTutorial;
             @SkipTutorial.performed -= instance.OnSkipTutorial;
             @SkipTutorial.canceled -= instance.OnSkipTutorial;
+            @Examine.started -= instance.OnExamine;
+            @Examine.performed -= instance.OnExamine;
+            @Examine.canceled -= instance.OnExamine;
         }
 
         /// <summary>
@@ -1135,6 +1167,13 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSkipTutorial(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Examine" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnExamine(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Global" which allows adding and removing callbacks.

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Events
@@ -15,10 +13,7 @@ public static class Events
 //Change the value of said variables before firing the event in the corresponding script
 
 //When anything that changes the map in any way happens, call this event
-public class ExampleEvent : Event
-{
-    
-}
+
 
 #region GAME STATE EVENTS
 public class OnGameStateChanged : Event
@@ -71,4 +66,9 @@ public class CarriedCrest : Event
 public class OnGateInteraction : Event
 {
     public bool GateOpened;
+}
+public class OnExamineObject : Event
+{
+    public GameObject Target;
+    public bool StartExamination;
 }
