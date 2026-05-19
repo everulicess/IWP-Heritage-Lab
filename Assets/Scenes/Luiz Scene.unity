@@ -15547,7 +15547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are a ghost hunter and have been hired to investigate on old Castle,
+  m_text: 'You are a ghost hunter and have been hired to investigate an old Castle,
     but upon entering the grounds the ghosts locked the gates behind you!
 
 
