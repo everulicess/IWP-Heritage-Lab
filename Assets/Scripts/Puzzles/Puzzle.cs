@@ -14,7 +14,6 @@ public abstract class Puzzle : MonoBehaviour
     public bool IsSolved { get; protected set; }
     public bool IsActive { get; protected set; }
 
-    public event Action<Puzzle> OnStateChanged;
 
     // Pieces register themselves — no inspector list to maintain
     readonly List<PuzzlePiece> pieces = new();

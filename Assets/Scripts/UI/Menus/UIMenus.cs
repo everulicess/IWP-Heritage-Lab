@@ -21,23 +21,18 @@ public class UIMenus : MonoBehaviour
 
         winningScreen.SetActive(false);
         gateScreen.SetActive(false);
-
     }
     private void OnDisable()
     {
         EventsManager.RemoveListener<OnGateInteraction>(OnFinishedGameInteraction);
+        EventsManager.RemoveListener<OnGameStateChanged>(OnGameStateChanged);
     }
-
     private void OnFinishedGameInteraction(OnGateInteraction evt)
     {
         if (evt.GateOpened)
-        {
             winningScreen.SetActive(true);
-        }
         else
-        {
             StartCoroutine(nameof(GateTextShowing));
-        }
     }
     IEnumerator GateTextShowing()
     {
@@ -48,10 +43,6 @@ public class UIMenus : MonoBehaviour
     }
     void OnGameStateChanged(OnGameStateChanged evt)
     {
-        if (evt.NewState == GameState.Paused)
-        {
-
-        }
-
+        pauseOverlay.SetActive(evt.NewState == GameState.Paused);
     }
 }

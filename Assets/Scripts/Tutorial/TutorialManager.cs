@@ -105,6 +105,7 @@ public class TutorialManager : MonoBehaviour
             tutorialBackdrop.SetActive(false);
 
         onTutorialFinished?.Invoke();
+        Debug.Log("tutorial finished");
     }
     public void NotifyStepEvent(OnNotifyTutorialStepEvent evt)
     {
