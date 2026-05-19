@@ -8,11 +8,8 @@ public class TutorialStepTrigger : MonoBehaviour
 
     public void TriggerStep(string stepName = "")
     {
-        if (string.IsNullOrEmpty(stepName))
-            return;
-
         OnNotifyTutorialStepEvent evt = new();
-        evt.stepToNotify = stepName;
+        evt.stepToNotify = string.IsNullOrEmpty(stepName) ? stepNameToNotify : stepName;
         EventsManager.Broadcast(evt);
     }
 }

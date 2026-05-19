@@ -7,6 +7,14 @@ public class LightPuzzle : Puzzle
     [SerializeField] GameObject activeBed;
     [SerializeField] GameObject finalRelic;
 
+    private TutorialStepTrigger tutorialStepTrigger;
+
+    
+    protected override void Awake()
+   {
+        base.Awake();
+        tutorialStepTrigger = GetComponent<TutorialStepTrigger>();
+   }
     protected override void OnStart()
     {
         // Initial state
@@ -24,6 +32,7 @@ public class LightPuzzle : Puzzle
 
     protected override void OnSolved()
     {
+        base.OnSolved();
         // Swap models when solved
         if (inactiveBed != null)
         {
@@ -35,6 +44,8 @@ public class LightPuzzle : Puzzle
             activeBed.SetActive(true);
             finalRelic.SetActive(true);
         }
+
+        tutorialStepTrigger.TriggerStep();
 
         Debug.Log("Light puzzle solved");
     }

@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 6370470059753761021}
   - component: {fileID: 864341129393267688}
   - component: {fileID: 7344094180424966015}
+  - component: {fileID: 8994641494903752897}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -278,6 +279,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckDistance: 0.2
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableDistance: 3
+--- !u!114 &8994641494903752897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869439739089204882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3261093d12a20174681996846e21115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShaderData
 --- !u!1 &5781587920872117650
 GameObject:
   m_ObjectHideFlags: 0

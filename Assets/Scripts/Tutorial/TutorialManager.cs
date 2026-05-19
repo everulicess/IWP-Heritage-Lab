@@ -127,7 +127,9 @@ public class TutorialManager : MonoBehaviour
     {
         GoToStep(0);
     }
+
 }
+
 
 [Serializable]
 public class TutorialStep
