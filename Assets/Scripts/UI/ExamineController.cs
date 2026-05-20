@@ -11,6 +11,7 @@ public class ExamineController : MonoBehaviour
     [SerializeField] GameObject target;
     [SerializeField] float rotationSpeed = 6.0f;
     [SerializeField] Button exitButton;
+    [SerializeField] float targetSize = 1.0f;
 
     void Start()
     {
@@ -33,12 +34,24 @@ public class ExamineController : MonoBehaviour
     private void Examine(OnExamineObject evt)
     {
         examine = evt.StartExamination;
+        if (evt.Target == null)
+            return;
         target.GetComponent<MeshFilter>().mesh = evt.Target.GetComponent<MeshFilter>().mesh;
         target.GetComponent<Renderer>().material = evt.Target.GetComponent<Renderer>().material;
         target.SetActive(true);
         exitButton.gameObject.SetActive(true);
         GameManager.Instance.SetState(GameState.WinningScreen);
-        
+
+        NormalizeScale(evt.Target);
+
+    }
+    private void NormalizeScale(GameObject source)
+    {
+        Mesh mesh = source.GetComponent<MeshFilter>().mesh;
+        Vector3 meshSize = mesh.bounds.size; // unscaled, local space
+        float largestAxis = Mathf.Max(meshSize.x, meshSize.y, meshSize.z);
+        float scaleFactor = targetSize / largestAxis;
+        target.transform.localScale = Vector3.one * scaleFactor;
     }
     private void Update()
     {
@@ -56,6 +69,7 @@ public class ExamineController : MonoBehaviour
         examine = false;
         target.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        EventsManager.Broadcast(new OnExamineObject { StartExamination = false });
 
     }
 }

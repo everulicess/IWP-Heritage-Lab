@@ -8273,7 +8273,7 @@ GameObject:
   - component: {fileID: 474690219}
   - component: {fileID: 474690218}
   - component: {fileID: 474690217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9794,7 +9794,7 @@ Transform:
   m_GameObject: {fileID: 521412150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: 0.66}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15688,7 +15688,7 @@ GameObject:
   - component: {fileID: 841640103}
   - component: {fileID: 841640102}
   - component: {fileID: 841640101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23995,7 +23995,7 @@ GameObject:
   - component: {fileID: 1182397194}
   - component: {fileID: 1182397193}
   - component: {fileID: 1182397192}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29184,8 +29184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 554.625, y: 200.24997}
-  m_SizeDelta: {x: 480, y: 60}
+  m_AnchoredPosition: {x: 554.625, y: 115}
+  m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424663082
 MonoBehaviour:
@@ -37325,6 +37325,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3197828597390999378, guid: 057d171c934c9e940a122a60578207ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197828597390999378, guid: 057d171c934c9e940a122a60578207ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197828597390999378, guid: 057d171c934c9e940a122a60578207ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8414868288984733348, guid: 057d171c934c9e940a122a60578207ec, type: 3}
       propertyPath: m_Name
       value: Family Crest (1)
@@ -43955,6 +43967,7 @@ MonoBehaviour:
   target: {fileID: 521412150}
   rotationSpeed: 45
   exitButton: {fileID: 1424663082}
+  targetSize: 0.2
 --- !u!1 &2064473016
 GameObject:
   m_ObjectHideFlags: 0
@@ -44928,7 +44941,7 @@ GameObject:
   - component: {fileID: 2113521761}
   - component: {fileID: 2113521760}
   - component: {fileID: 2113521759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

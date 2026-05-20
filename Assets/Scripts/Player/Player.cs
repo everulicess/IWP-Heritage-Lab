@@ -23,10 +23,10 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] float groundCheckDistance;
 
-    [Space]
-    [Header("Interaction")]
-    [SerializeField] LayerMask interactableMask;
-    [SerializeField] float interactableDistance = 3.0f;
+    //[Space]
+    //[Header("Interaction")]
+    //[SerializeField] LayerMask interactableMask;
+    //[SerializeField] float interactableDistance = 3.0f;
 
     Rigidbody _rb;
     CapsuleCollider _capsuleCollider;
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
     Vector2 _lookInput;
     float _cameraPitch;
     bool _isGrounded;
-    bool _isCursorVisible;
 
     private void Awake()
     {
@@ -57,7 +56,6 @@ public class Player : MonoBehaviour
         InputManager.Instance.Player.Look.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
         InputManager.Instance.Player.Look.canceled += ctx => _lookInput = Vector2.zero;
         InputManager.Instance.Player.Jump.performed += ctx => TryJump();
-        InputManager.Instance.Player.Interact.performed += ctx => TryInteracting();
         InputManager.Instance.Player.Codex.performed += ctx => EventsManager.Broadcast(new OnCodexOpened());
         InputManager.Instance.UI.CloseMenu.performed += ctx => EventsManager.Broadcast(new OnCodexClosed());
 
@@ -70,7 +68,6 @@ public class Player : MonoBehaviour
         InputManager.Instance.Player.Look.performed -= ctx => _lookInput = ctx.ReadValue<Vector2>();
         InputManager.Instance.Player.Look.canceled -= ctx => _lookInput = Vector2.zero;
         InputManager.Instance.Player.Jump.performed -= ctx => TryJump();
-        InputManager.Instance.Player.Interact.performed -= ctx => TryInteracting();
         InputManager.Instance.Player.Codex.performed -= ctx => EventsManager.Broadcast(new OnCodexOpened());
         InputManager.Instance.UI.CloseMenu.performed -= ctx => EventsManager.Broadcast(new OnCodexClosed());
 
@@ -96,7 +93,6 @@ public class Player : MonoBehaviour
         _cameraPitch = Mathf.Clamp(_cameraPitch, -verticalClamp, verticalClamp);
         cameraTransform.localRotation = Quaternion.Euler(_cameraPitch, 0f, 0f);
     }
-
     void HandleMovement()
     {
         Vector3 move = transform.right * _moveInput.x + transform.forward * _moveInput.y;
@@ -123,17 +119,9 @@ public class Player : MonoBehaviour
     void TryJump()
     {
         if (!_isGrounded) return;
-
         // Reset Y velocity before jumping for consistent jump height
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
     #endregion
-    void TryInteracting()
-    {
-        Ray ray = new(cameraTransform.position, cameraTransform.forward * 10);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactableDistance, interactableMask))
-            if (hit.collider.TryGetComponent<InteractableObject>(out InteractableObject interactable))
-                interactable.Interact();
-    }
 }

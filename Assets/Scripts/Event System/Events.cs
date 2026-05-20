@@ -63,12 +63,24 @@ public class CarriedCrest : Event
 }
 #endregion
 
+#region Gate Event
 public class OnGateInteraction : Event
 {
     public bool GateOpened;
 }
+#endregion
+
+#region ExamineEvent
 public class OnExamineObject : Event
 {
     public GameObject Target;
     public bool StartExamination;
 }
+#endregion
+#region INTERACTION EVENT
+public class OnInteractionPrompt : Event
+{
+    public InteractableObject Interactable;
+    public bool ShowPrompt;
+}
+#endregion
