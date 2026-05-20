@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HauntedShader
-  m_Shader: {fileID: -6465566751694194690, guid: 5b8c0e68b77a166418e66d910c09e8c1, type: 3}
+  m_Name: Water
+  m_Shader: {fileID: -6465566751694194690, guid: 7bc72672e8d28894b91acace2747b29d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,8 +24,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SampleTexture2D_aa05d02fc48148c3a772c1b940ccad27_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: c5c92ea5e34ed11449bd8f6807da680e, type: 3}
+    - _SampleTexture2D_0639045c5fee455995d8eba606bac891_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: e8f49e18cc80235438bc07bde51168f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,19 +42,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.3
-    - _FadeWidth: 0
-    - _Max_distance: 0
+    - _Alpha: 0.7
+    - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Rotation_speed: 3
-    - _Scale: 1.1
-    - _Twirl_Power: 10
+    - _Smoothness: 0.9
+    - _WaveHeight: 0.1
+    - _WaveScale: 1
+    - _WaveSpeed: 1
     m_Colors:
-    - _Colour: {r: 0.40073064, g: 0, b: 0.4528302, a: 1}
+    - _Colour: {r: 0.15801886, g: 0.5, b: 0.33859375, a: 1}
+    - _Tilling: {r: 5, g: 5, b: 0, a: 0}
+    - _White: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8544018641637107981
+--- !u!114 &7462653764096068592
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
