@@ -34,5 +34,12 @@ public class StudyPuzzlePiece : PuzzlePiece
         if (!CanInteract) return;
         placedCrestId = selectedCrestId;
         NotifyStateChanged();
+
+        if (IsInCorrectState)
+        {
+            Destroy(this);
+            Destroy(interactable);
+            EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false });
+        }
     }
 }

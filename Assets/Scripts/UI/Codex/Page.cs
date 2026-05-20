@@ -19,7 +19,7 @@ public class Page : MonoBehaviour
     public void SetInformation(CodexEntry entry)
     {
         imageHolder.sprite = entry.illustration;
-        objectNameHolder.text = entry.name;
+        objectNameHolder.text = entry.title;
         objectDescriptionHolder.text = entry.description;
     } 
 }

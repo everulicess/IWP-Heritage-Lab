@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: d99fce8eb0487354d8f63c85a23568ac
+guid: a287dfe12b397904abe19ec72817cbbc
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brick
+    second: {fileID: 2100000, guid: f34ba08ec24f1b1429fd2a9ce2edd525, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Marble
+    second: {fileID: 2100000, guid: e6595f0df0025274e84c1bb8b76c1a51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plaster
+    second: {fileID: 2100000, guid: 04e590c7cbedd444697139a8c33b1edb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof
+    second: {fileID: 2100000, guid: c606501d0ec67aa40897ca37d5e7168c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: 760bcc532cbc420458930021e21cb21c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 331a7762298a82e49936918bf6a08cca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

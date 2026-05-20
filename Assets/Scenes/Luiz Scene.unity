@@ -44644,6 +44644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5160348117683552219, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: _interactableMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 7344094180424966015, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: interactableDistance
       value: 7

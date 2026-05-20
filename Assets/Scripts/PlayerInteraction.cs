@@ -44,18 +44,23 @@ public class PlayerInteraction : MonoBehaviour
     {
         Ray ray = new(_cameraTransform.position, _cameraTransform.forward);
         InteractableObject hit = null;
+        EntriesUnlockerVolume entries = null;
+        Puzzle puzzle = null;
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _interactableDistance, _interactableMask))
+        {
             hitInfo.collider.TryGetComponent(out hit);
+            hitInfo.collider.TryGetComponent(out entries);
+            hitInfo.collider.TryGetComponent(out puzzle);
+        }
 
+        if (entries != null) return;
+        if (puzzle != null) return;
         if (hit == _currentTarget) return;
 
         _currentTarget = hit;
 
-        //if (hit != null)
             EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = hit != null && !isExamining });
-        //else
-            //EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false});
     }
 
     void TryInteract()

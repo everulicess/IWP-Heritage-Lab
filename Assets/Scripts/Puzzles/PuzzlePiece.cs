@@ -9,7 +9,7 @@ public abstract class PuzzlePiece : MonoBehaviour
 
     public event Action<PuzzlePiece> OnStateChanged;
 
-    InteractableObject interactable;
+    protected InteractableObject interactable;
 
 
     protected virtual void Awake()

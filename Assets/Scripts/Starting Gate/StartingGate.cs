@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(InteractableObject))]
 public class StartingGate : MonoBehaviour
 {
-    InteractableObject interactable;
     bool gateOpened;
+    [SerializeField] GameObject[] openedGates;
+    [SerializeField] GameObject[] closedGates;
     private void OnEnable()
     {
         EventsManager.AddListener<OnGameStateChanged>(OnGameStateChanged);
@@ -12,18 +13,26 @@ public class StartingGate : MonoBehaviour
     private void OnDisable()
     {
         EventsManager.RemoveListener<OnGameStateChanged>(OnGameStateChanged);
-
     }
-    void Start()
-    {
-        interactable = GetComponent<InteractableObject>();
-        interactable.OnInteraction.AddListener(Interact);
-    }
+  
     void OnGameStateChanged(OnGameStateChanged evt)
     {
         gateOpened = evt.NewState == GameState.Finished;
+        if (gateOpened)
+            OpenGate();
     }
-    void Interact()
+
+    private void OpenGate()
+    {
+        foreach (GameObject go in openedGates)
+            go.SetActive(true);
+
+        foreach (GameObject go in closedGates)
+            go.SetActive(false);
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         EventsManager.Broadcast(new OnGateInteraction{ GateOpened = gateOpened });
     }

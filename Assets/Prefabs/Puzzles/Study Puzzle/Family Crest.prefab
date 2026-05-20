@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.547, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5921503872407679050}
@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.3158018, y: 0.064719915, z: 0.36601815}
+  m_Center: {x: 0.0031384528, y: 0.011507869, z: -0.02196978}
 --- !u!114 &7444273223185448943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0606e55355926f478643a082f617ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExaminableObject
-  objectToExamine: {fileID: 0}
+  objectToExamine: {fileID: 6442039497277696752}
 --- !u!1001 &6172131730314024865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,15 +108,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47912002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -147,9 +147,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 5b2be5debb7352e498c735c80b6a98bd, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ccf7705d3e46c6a4db60632f1c7cd3e8, type: 2}
     - target: {fileID: 919132149155446097, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
       propertyPath: m_Name
       value: Crest
@@ -162,5 +170,10 @@ PrefabInstance:
 --- !u!4 &5921503872407679050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
+  m_PrefabInstance: {fileID: 6172131730314024865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6442039497277696752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 21aa07161a207ea4f9c936f2a2effe2f, type: 3}
   m_PrefabInstance: {fileID: 6172131730314024865}
   m_PrefabAsset: {fileID: 0}
