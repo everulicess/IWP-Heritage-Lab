@@ -77,6 +77,7 @@ public class OnExamineObject : Event
     public bool StartExamination;
 }
 #endregion
+
 #region INTERACTION EVENT
 public class OnInteractionPrompt : Event
 {
@@ -84,3 +85,4 @@ public class OnInteractionPrompt : Event
     public bool ShowPrompt;
 }
 #endregion
+
