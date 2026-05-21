@@ -40,7 +40,7 @@ public class ExamineController : MonoBehaviour
         target.GetComponent<Renderer>().material = evt.Target.GetComponent<Renderer>().material;
         target.SetActive(true);
         exitButton.gameObject.SetActive(true);
-        GameManager.Instance.SetState(GameState.WinningScreen);
+        GameManager.Instance.SetState(GameState.Cutscene);
 
         NormalizeScale(evt.Target);
 

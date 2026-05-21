@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using System.Diagnostics.Tracing;
 
 public class GameManager : MonoBehaviour
 {
@@ -81,6 +80,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnWinningCheckCondition(OnGateInteraction evt)
     {
+        Debug.LogError($"GATE OPENED {evt.GateOpened}");
         if (evt.GateOpened)
             SetState(GameState.WinningScreen);
     }

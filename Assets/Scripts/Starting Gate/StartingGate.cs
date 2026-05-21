@@ -17,6 +17,7 @@ public class StartingGate : MonoBehaviour
   
     void OnGameStateChanged(OnGameStateChanged evt)
     {
+        if (!gateOpened)
         gateOpened = evt.NewState == GameState.Finished;
         if (gateOpened)
             OpenGate();
@@ -34,7 +35,8 @@ public class StartingGate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EventsManager.Broadcast(new OnGateInteraction{ GateOpened = gateOpened });
+        if (other.CompareTag("Player"))
+            EventsManager.Broadcast(new OnGateInteraction{ GateOpened = gateOpened });
     }
 
 }
