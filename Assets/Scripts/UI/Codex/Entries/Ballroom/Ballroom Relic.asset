@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2943f55dfdc394fbf06a1515bab41e, type: 3}
   m_Name: Ballroom Relic
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
-  title: 
-  description: 
-  illustration: {fileID: 0}
+  title: Porcelain Tureens
+  description: 'Entry about Tureens (like what they are and how popular they were) '
+  illustration: {fileID: 21300000, guid: e4af4e1c838038440aed5fb1b5cad413, type: 3}

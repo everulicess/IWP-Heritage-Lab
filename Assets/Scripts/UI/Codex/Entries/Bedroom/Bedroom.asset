@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2943f55dfdc394fbf06a1515bab41e, type: 3}
-  m_Name: Tureens
+  m_Name: Bedroom
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
-  title: Tureens
-  description: 'Entry about Tureens (like what they are and how popular they were) '
-  illustration: {fileID: 0}
+  title: Guest Bedroom
+  description: This was the bedroom they used to give to the guest. It has luxurious
+    furniture to show the owners wealth.
+  illustration: {fileID: 21300000, guid: 4f1a1db6aa47e6547ae3c9ad83a9c492, type: 3}

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2943f55dfdc394fbf06a1515bab41e, type: 3}
-  m_Name: Study
+  m_Name: Dining
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
-  title: Study
-  description: Explain that this room was often used as both study and kids' playroom
-  illustration: {fileID: 21300000, guid: 45cd621c1e42f0842a263cb632a09181, type: 3}
+  title: Dining Room
+  description: yes
+  illustration: {fileID: 21300000, guid: 755fa6a6bcfea694e8323ac7a0063481, type: 3}

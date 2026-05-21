@@ -15,4 +15,4 @@ MonoBehaviour:
   title: Parlor
   description: 'Entry about the Parlor (Herenkamer) and what it was meant for (usually
     smoking and drinking with the occasional game '
-  illustration: {fileID: 0}
+  illustration: {fileID: 21300000, guid: ce3b2aedbbf76d741b24de8375b8e13f, type: 3}
