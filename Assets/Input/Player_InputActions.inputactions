@@ -70,9 +70,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Flashlight",
+                    "name": "Use Tool",
                     "type": "Button",
                     "id": "032e1425-5ecc-47ae-a8cd-42db14285dcd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Flashlight",
+                    "type": "Button",
+                    "id": "fcdb2a2a-03e5-422f-b364-7304e56c43f5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EMF Detector",
+                    "type": "Button",
+                    "id": "41595bc7-07f3-4adc-8a93-c77905cca422",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -219,7 +237,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Use Tool",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c15f87f6-84e5-4160-ad27-6a9e242beb0a",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Flashlight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e46a9e2f-cddb-46b3-adce-fe975705b6c5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EMF Detector",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

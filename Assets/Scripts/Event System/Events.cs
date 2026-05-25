@@ -86,3 +86,14 @@ public class OnInteractionPrompt : Event
 }
 #endregion
 
+#region PLAYER TOOLS EVENTS
+public class OnToolSelected : Event
+{
+    public PlayerToolsID selectedTool;
+}
+public class OnEMFDetection : Event
+{
+    public Vector3 EMFPosition;
+    public float EMFDetectionDistance = 10f;
+}
+#endregion

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7062948308583020468}
   - component: {fileID: 212013310330406971}
   - component: {fileID: 4323380823475898613}
+  - component: {fileID: 7318506627709348331}
   - component: {fileID: 1193283223249844384}
   m_Layer: 6
   m_Name: PuzzleCandle
@@ -131,6 +132,18 @@ MonoBehaviour:
   OnInteraction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7318506627709348331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414422584885657589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a38c1e9604095b4c8ec7701a609a0a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EMFDetectable
 --- !u!114 &1193283223249844384
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,3 +46,10 @@ public enum CrestID
     Tamminga,
 }
 #endregion
+
+public enum PlayerToolsID
+{
+    None,
+    Flashlight,
+    EMFDetector
+}
