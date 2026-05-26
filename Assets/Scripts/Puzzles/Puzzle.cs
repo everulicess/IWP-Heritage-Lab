@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class Puzzle : MonoBehaviour
 {
 
+    [Header("Lights To Enable")]
+    [SerializeField] private List<GameObject> roomLights;
+
     [SerializeField] protected PuzzleID puzzleId = PuzzleID.None;
     [SerializeField] protected bool startActive = true;
 
@@ -15,7 +18,7 @@ public abstract class Puzzle : MonoBehaviour
     public bool IsActive { get; protected set; }
 
 
-    // Pieces register themselves — no inspector list to maintain
+    // Pieces register themselves ï¿½ no inspector list to maintain
     readonly List<PuzzlePiece> pieces = new();
     public IReadOnlyList<PuzzlePiece> Pieces => pieces;
     public int PieceCount => pieces.Count;
@@ -50,6 +53,14 @@ public abstract class Puzzle : MonoBehaviour
     protected virtual void Start()
     {
         if (startActive) StartPuzzle();
+
+        foreach (GameObject light in roomLights)
+        {
+            if (light != null)
+            {
+                light.SetActive(false);
+            }
+        }
     }
 
     public virtual void StartPuzzle()
@@ -70,6 +81,14 @@ public abstract class Puzzle : MonoBehaviour
         OnSolved();
         BroadcastState(state);
         Debug.Log("PUZZLE HAS BEEN SOLVED");
+
+        foreach (GameObject light in roomLights)
+        {
+            if (light != null)
+            {
+                light.SetActive(true);
+            }
+        }
     }
 
     protected void Fail()
