@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Dining Room Relic
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Imported Wine
-  description: An entry about what the upper classes back then ate due to their more
-    luxurious lifestyle and trends back then
+  description: 'Wine was considered a luxury product in the Netherlands during the
+    18th and 19th centuries, especially in northern regions such as Groningen where
+    grapes could not easily be grown. Wealthy households imported wines from countries
+    like France, Germany, and Spain to serve during formal dinners and social gatherings,
+    making wine a symbol of status and refinement. '
   illustration: {fileID: 21300000, guid: 2456712799c355548a481ae04a832e11, type: 3}

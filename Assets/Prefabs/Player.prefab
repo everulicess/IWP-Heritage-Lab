@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 200345405248926550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.444, z: 0.383}
+  m_LocalPosition: {x: 0, y: 0.406, z: 0.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,7 +143,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 0}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26341556457e10441a0c31028ece9b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlashlightController
+  toolID: 0
 --- !u!108 &4218481841896142812
 Light:
   m_ObjectHideFlags: 0
@@ -228,10 +230,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.56559277, g: 0.7141586, b: 0.7735849, a: 1}
-  m_Intensity: 6
-  m_Range: 15
-  m_SpotAngle: 85.46847
-  m_InnerSpotAngle: 77.27055
+  m_Intensity: 50
+  m_Range: 300
+  m_SpotAngle: 64.158936
+  m_InnerSpotAngle: 51.699123
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -295,14 +297,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_CustomShadowLayers: 0
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
   m_RenderingLayersMask:
     serializedVersion: 0
-    m_Bits: 1
+    m_Bits: 4294967295
   m_ShadowRenderingLayersMask:
     serializedVersion: 0
     m_Bits: 1
@@ -342,7 +344,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.873, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 1, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6879323829904752036}
@@ -396,7 +398,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.000681
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: -0.00222376, z: 0}
 --- !u!114 &7344094180424966015
@@ -448,8 +450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   _interactableMask:
     serializedVersion: 2
-    m_Bits: 0
-  _interactableDistance: 3
+    m_Bits: 64
+  _interactableDistance: 2
   _cameraTransform: {fileID: 8240828119543302011}
 --- !u!1 &5724702381560626786
 GameObject:
@@ -495,6 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30a0e3e81ba34c4da502d28783613f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EMFDetectorController
+  toolID: 0
   detectionDistance: 10
 --- !u!1 &5781587920872117650
 GameObject:

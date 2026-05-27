@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Chess
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Chess
-  description: 'Entry about chess (its old and popular back then) '
-  illustration: {fileID: 0}
+  description: 'Chess was a widely respected board game among the upper classes during
+    the 18th and 19th centuries. It was commonly played in parlors and drawing rooms
+    as both entertainment and a demonstration of strategic thinking and education.
+    In wealthy households, chess sets were often decorative as well as functional,
+    reflecting the status of the owner. '
+  illustration: {fileID: 21300000, guid: 2652cfa4352fcb046bbb87d6c758506c, type: 3}

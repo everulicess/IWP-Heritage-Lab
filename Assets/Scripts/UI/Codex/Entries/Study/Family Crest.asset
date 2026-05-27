@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Family Crest
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Family Crest
-  description: Info about the family crest (and the others, see the vassal houses
-    plaque as reference from the church trip)
+  description: 'A family crest was a heraldic symbol used to represent a noble family
+    and their lineage. These crests were displayed on buildings, objects, and documents
+    to show ownership, status, and alliances. In larger estates, variations of the
+    main crest could also represent related families or vassal houses connected through
+    marriage or service. '
   illustration: {fileID: 21300000, guid: aff5f00ce46376e45a1a87542d705a22, type: 3}

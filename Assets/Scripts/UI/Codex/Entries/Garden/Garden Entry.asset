@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Garden Entry
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Garden
-  description: They used to grow crops and herbs here.
-  illustration: {fileID: 0}
+  description: 'Gardens at country estates served both practical and aesthetic purposes.
+    They were used to grow herbs, vegetables, and sometimes fruit, supporting household
+    needs. At the same time, gardens were carefully designed to demonstrate control
+    over nature and reflect the wealth and status of the estate owner. '
+  illustration: {fileID: 21300000, guid: 890db5100c2f65545a8d4b4e392cad25, type: 3}

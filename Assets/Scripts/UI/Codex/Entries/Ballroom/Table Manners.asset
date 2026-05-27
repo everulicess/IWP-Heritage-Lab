@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Table Manners
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Table Manners
-  description: 'Entry about how the tables had to be set properly at the time, layout
-    of forks and such being far mreo important back then especially for rich people '
+  description: 'Formal dining in wealthy households followed strict etiquette rules
+    that dictated how tables were set and how guests were expected to behave. The
+    placement of cutlery, glassware, and serving dishes was highly structured, often
+    reflecting social rank and order. Proper table etiquette was an important part
+    of upper-class identity. '
   illustration: {fileID: 21300000, guid: e19fa67114db40d42b9d5fd229b34176, type: 3}

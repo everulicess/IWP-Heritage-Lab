@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Wall Cabinet
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Wall Cabinet
-  description: 'Entry about the wall cabinet (if we have enough info on that idea,
-    can also use the actual picture for it)
-
-'
-  illustration: {fileID: 0}
+  description: Wall cabinets in parlors were used to store valuable or personal items
+    such as letters, drinking accessories, or small heirlooms. These cabinets were
+    typically locked and only opened during social gatherings or by the head of the
+    household. They were both practical storage and a way to keep important possessions
+    on display but protected.
+  illustration: {fileID: 21300000, guid: 4e75cf7b954b37c4187f77e03600707a, type: 3}
