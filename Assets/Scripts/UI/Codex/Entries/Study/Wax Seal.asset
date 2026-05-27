@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Wax Seal
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Wax Seal
-  description: "Explain that wax seals were used as both signature and \u201Clock\u201D,
-    as once broken a wax seal was incredibly hard to fix, especially because of the
-    intricate symbols pressed into them, so you would know if your letter was opened
-    before it got to you "
-  illustration: {fileID: 0}
+  description: 'Wax seals were used to secure letters and documents by stamping hot
+    wax with a metal crest or symbol. They acted as both a signature and a form of
+    protection, as breaking the seal showed if a message had been opened or tampered
+    with. Wax seals were commonly used by noble families and officials to authenticate
+    important correspondence. '
+  illustration: {fileID: 21300000, guid: 01aed0f94f7f67e4fb1ffa4b88230269, type: 3}

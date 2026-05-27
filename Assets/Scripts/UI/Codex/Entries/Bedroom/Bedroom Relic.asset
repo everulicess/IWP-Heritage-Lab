@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Bedroom Relic
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Chamberstick
-  description: A chamberstick was a small handheld candle holder used to carry light
-    through the house at night, especially between bedrooms and hallways, a must
-    have in every house or castle back then.
+  description: 'A chamberstick was a small handheld candle holder used to carry light
+    safely through a house at night. It was especially common in bedrooms and hallways
+    before the introduction of electric lighting. The design typically included a
+    handle and a drip tray to prevent wax from spilling, allowing residents or servants
+    to move through dark interiors safely. '
   illustration: {fileID: 21300000, guid: 02fd01fd929e4da49ab681a78b8fed6f, type: 3}

@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Dining
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Dining Room
-  description: yes
+  description: The dining room was one of the most important social spaces in a wealthy
+    household. Formal meals were often served in multiple courses and followed strict
+    etiquette rules, with servants preparing and presenting food while guests gathered
+    to dine, socialize, and discuss business or politics.
   illustration: {fileID: 21300000, guid: 755fa6a6bcfea694e8323ac7a0063481, type: 3}

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Study Relic
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Old Doll
-  description: 'Porcelain dolls where actually collectibles and usually bought for
-    grown women as decoration, so this is a more accurate version to the dolls that
-    where actually given to children as toys '
+  description: "Porcelain dolls were primarily made as decorative collector\u2019s
+    items for adults rather than toys for children. Their fragile construction and
+    detailed craftsmanship made them unsuitable for rough play, and they were often
+    displayed in cabinets or kept as luxury objects. In contrast, children\u2019s
+    ragdolls were much simpler, typically made from cloth or stuffed fabric, and
+    were used as everyday playthings in the household. "
   illustration: {fileID: 21300000, guid: b6298dbc46d6d6845b6aa5e6d8c5f6c0, type: 3}

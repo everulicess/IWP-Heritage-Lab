@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Pipe Organs
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Pipe Organ
-  description: 'Entry about pipe organs (again, popularity and what they are really) '
-  illustration: {fileID: 0}
+  description: 'Pipe organs were large and complex musical instruments found in churches
+    and wealthy estates. In manor houses, they were used for entertainment, religious
+    gatherings, and formal events. Owning or maintaining an organ was a clear sign
+    of wealth and cultural refinement, as they required both space and skilled musicians
+    to operate. '
+  illustration: {fileID: 21300000, guid: ca77a6ae79e60204dab4f831f1dc59a1, type: 3}

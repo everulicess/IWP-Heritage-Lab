@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Study
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
   title: Study
-  description: Explain that this room was often used as both study and kids' playroom
+  description: 'The study in a wealthy household was used for reading, writing, managing
+    correspondence, and conducting private family matters. In some homes, especially
+    those with children, the study also doubled as a space for learning and quiet
+    play. It often contained desks, cabinets, and personal objects that reflected
+    both education and family life. '
   illustration: {fileID: 21300000, guid: 45cd621c1e42f0842a263cb632a09181, type: 3}
