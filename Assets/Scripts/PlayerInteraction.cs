@@ -59,13 +59,11 @@ public class PlayerInteraction : MonoBehaviour
         if (hit == _currentTarget) return;
 
         _currentTarget = hit;
-
-            EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = hit != null && !isExamining });
+            EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = hit != null && !isExamining && _currentTarget.canBeInteracted });
     }
 
     void TryInteract()
     {
         _currentTarget?.Interact();
-
     }
 }

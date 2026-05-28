@@ -72,6 +72,7 @@ MonoBehaviour:
   OnInteraction:
     m_PersistentCalls:
       m_Calls: []
+  canBeInteracted: 1
 --- !u!114 &1495491298047448869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a3d85207ef3fa449382922e1888891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FamilyCrest
-  crestID: 1
+  crestID: 2
 --- !u!114 &2272663978492618925
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -80,8 +80,6 @@ public abstract class Puzzle : MonoBehaviour
         state = PuzzleState.Solved;
         OnSolved();
         BroadcastState(state);
-        Debug.Log("PUZZLE HAS BEEN SOLVED");
-
         foreach (GameObject light in roomLights)
         {
             if (light != null)
@@ -120,5 +118,5 @@ public abstract class Puzzle : MonoBehaviour
     protected virtual void OnFailed() { }
 
     protected void BroadcastState(PuzzleState state) =>
-        EventsManager.Broadcast(new PuzzleStateChanged { puzzle = this, state = state });
+        EventsManager.Broadcast(new OnPuzzleStateChanged { puzzle = this, state = state });
 }

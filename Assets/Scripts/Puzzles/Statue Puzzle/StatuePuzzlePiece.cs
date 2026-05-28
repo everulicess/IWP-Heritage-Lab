@@ -10,7 +10,6 @@ public class StatuePuzzlePiece : PuzzlePiece
 
     [Tooltip("Degrees rotated per interaction.")]
     [SerializeField] float rotationStep = 45f;
-    new Renderer renderer;
     public override bool IsInCorrectState{
         get
         {
@@ -22,14 +21,12 @@ public class StatuePuzzlePiece : PuzzlePiece
     protected override void Awake()
     {
         base.Awake();
-        renderer = GetComponentInChildren<Renderer>();
     }
     public override void Interact()
     {
         if (!CanInteract) return;
         transform.Rotate(Vector3.up, rotationStep, Space.World);
 
-        renderer.material.color = IsInCorrectState ? Color.green : Color.red;
         
         NotifyStateChanged();
     }

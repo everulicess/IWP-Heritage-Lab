@@ -16,7 +16,7 @@ public class EntryButton : MonoBehaviour
 
     public void PageSelected()
     {
-        SelectEntry evt = new();
+        OnSelectEntry evt = new();
         evt.PageEntryIndex = pageIndex;
         EventsManager.Broadcast(evt);
     }

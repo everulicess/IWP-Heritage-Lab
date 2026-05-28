@@ -19,3 +19,4 @@ MonoBehaviour:
     like France, Germany, and Spain to serve during formal dinners and social gatherings,
     making wine a symbol of status and refinement. '
   illustration: {fileID: 21300000, guid: 2456712799c355548a481ae04a832e11, type: 3}
+  isRelic: 1

@@ -21,12 +21,28 @@ public abstract class PuzzlePiece : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        if (parentPuzzle != null) parentPuzzle.RegisterPiece(this);
+        if (parentPuzzle == null)
+            return;
+        parentPuzzle.RegisterPiece(this);
+        EventsManager.AddListener<OnPuzzleStateChanged>(UpdatePiece);
     }
 
     protected virtual void OnDisable()
     {
-        if (parentPuzzle != null) parentPuzzle.UnregisterPiece(this);
+        if (parentPuzzle == null)
+            return;
+
+        parentPuzzle.UnregisterPiece(this);
+        EventsManager.RemoveListener<OnPuzzleStateChanged>(UpdatePiece);
+
+    }
+
+    private void UpdatePiece(OnPuzzleStateChanged evt)
+    {
+        if (evt.puzzle != parentPuzzle)
+            return;
+        interactable.canBeInteracted = evt.state != PuzzleState.Solved;
+        EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false});
     }
 
     public abstract bool IsInCorrectState { get; }

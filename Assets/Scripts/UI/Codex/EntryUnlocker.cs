@@ -5,6 +5,7 @@ public class EntryUnlocker : MonoBehaviour
 {
     [SerializeField] CodexEntry entry;
     InteractableObject interactableObject;
+    bool isUnlocked = false;
     private void OnEnable()
     {
         interactableObject = GetComponent<InteractableObject>();
@@ -12,9 +13,12 @@ public class EntryUnlocker : MonoBehaviour
     }
     void UnlockEntry()
     {
+        if (isUnlocked)
+            return;
         Debug.Log($"UNLOCKING ENTRY {entry}");
+        isUnlocked = true;
 
-        UnlockEntry evt = new();
+        OnUnlockedEntry evt = new();
         evt.Entry = entry;
         EventsManager.Broadcast(evt);
     }

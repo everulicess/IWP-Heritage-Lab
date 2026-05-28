@@ -54,6 +54,6 @@ public class UIMenus : MonoBehaviour
     }
     void OnGameStateChanged(OnGameStateChanged evt)
     {
-        pauseOverlay.SetActive(evt.NewState == GameState.Paused);
+        pauseOverlay.SetActive(evt.NewState == GameState.Paused /*&& Time.timeScale == 0.0f*/);
     }
 }

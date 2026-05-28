@@ -18,3 +18,4 @@ MonoBehaviour:
     from porcelain or silver and decorated to match the dining service. They played
     an important role in formal dining, where meals were served in multiple courses. '
   illustration: {fileID: 21300000, guid: e4af4e1c838038440aed5fb1b5cad413, type: 3}
+  isRelic: 1

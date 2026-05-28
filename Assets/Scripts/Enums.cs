@@ -16,7 +16,8 @@ public enum PuzzleID
     None,
     StatuePuzzle,
     ExamplePuzzle,
-    LightPuzzle
+    LightPuzzle,
+    StudyPuzzle
 }
 public enum PuzzleState
 {
@@ -52,4 +53,13 @@ public enum PlayerToolsID
     None,
     Flashlight,
     EMFDetector
+}
+
+public enum NotificationCategory
+{
+    None,
+    EntryUnlocked,
+    RelicCollected,
+    PuzzleFinished,
+
 }

@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class EMFDetectable : MonoBehaviour
 {
+    [SerializeField] float reactionDuration = 2.0f;
+    [SerializeField] ParticleSystem particles;
+    Coroutine activeReaction;
     private void OnEnable()
     {
         EventsManager.AddListener<OnEMFDetection>(ReactToEMF);
@@ -17,17 +21,20 @@ public class EMFDetectable : MonoBehaviour
 
     private void ReactToEMF(OnEMFDetection evt)
     {
-        if (Vector3.Distance(this.gameObject.transform.position, evt.EMFPosition) <= evt.EMFDetectionDistance)
-        {
+        if (Vector3.Distance(this.gameObject.transform.position, evt.EMFPosition) > evt.EMFDetectionDistance)
+            return;
             Debug.Log($"EMF ha Detected this opbjec:{this.gameObject.name}");
-            StartCoroutine(ReactionSequence());
-        }
+        if (activeReaction != null)
+            StopCoroutine(activeReaction);
+        activeReaction = StartCoroutine(ReactionSequence());
+
     }
 
     IEnumerator ReactionSequence()
     {
-        GameObject spawn = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), this.transform);
-        yield return new WaitForSeconds(2.0f);
-        Destroy(spawn);
+        particles.Play();
+        yield return new WaitForSeconds(reactionDuration);
+        particles.Stop();
+        activeReaction = null;
     }
 }

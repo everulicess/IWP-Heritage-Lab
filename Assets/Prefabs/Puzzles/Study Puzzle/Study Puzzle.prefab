@@ -141,7 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3501228897d6b7543ae848317f601809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StudyPuzzle
-  puzzleId: 0
+  roomLights: []
+  puzzleId: 4
   startActive: 1
   state: 0
   objectsToActivateWhenSolved:

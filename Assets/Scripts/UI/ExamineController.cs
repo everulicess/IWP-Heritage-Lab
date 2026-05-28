@@ -37,7 +37,7 @@ public class ExamineController : MonoBehaviour
         if (evt.Target == null)
             return;
         target.GetComponent<MeshFilter>().mesh = evt.Target.GetComponent<MeshFilter>().mesh;
-        target.GetComponent<Renderer>().material = evt.Target.GetComponent<Renderer>().material;
+        target.GetComponent<Renderer>().materials = evt.Target.GetComponent<Renderer>().materials;
         target.SetActive(true);
         exitButton.gameObject.SetActive(true);
         GameManager.Instance.SetState(GameState.Cutscene);

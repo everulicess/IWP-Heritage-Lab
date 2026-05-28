@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1089825306992037702}
   - component: {fileID: 4725898236946210813}
   - component: {fileID: 75383896199955178}
-  - component: {fileID: 367706403441155112}
   m_Layer: 6
   m_Name: Statue Puzzle Piece
   m_TagString: Untagged
@@ -53,6 +52,7 @@ MonoBehaviour:
   OnInteraction:
     m_PersistentCalls:
       m_Calls: []
+  canBeInteracted: 1
 --- !u!114 &1089825306992037702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,18 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntryUnlocker
   entry: {fileID: 11400000, guid: 623eaa97f88248542807df541ee71837, type: 2}
---- !u!114 &367706403441155112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2346160541800586800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a38c1e9604095b4c8ec7701a609a0a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EMFDetectable
 --- !u!1 &5708660460088750529
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,4 +10,6 @@ public class CodexEntry : ScriptableObject
     public string description;
     [Space]
     public Sprite illustration;
+    [Space]
+    public bool isRelic = false;
 }

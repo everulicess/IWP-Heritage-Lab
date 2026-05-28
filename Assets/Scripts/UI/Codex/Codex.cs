@@ -1,9 +1,12 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Codex : MonoBehaviour
 {
@@ -22,6 +25,11 @@ public class Codex : MonoBehaviour
     [SerializeField] Button nextButton;
     [SerializeField] Button previousButton;
 
+    [Space]
+    [Header("Input Display")]
+    [SerializeField] TextMeshProUGUI inputTextHolder;
+    [SerializeField] InputActionReference codexInput;
+
 
     private List<CodexEntry> unlockedEntries = new();
     private List<GameObject> availablePages = new();
@@ -29,20 +37,22 @@ public class Codex : MonoBehaviour
 
     private void OnEnable()
     {
-        EventsManager.AddListener<UnlockEntry>(OnUnlockEntry);
-        EventsManager.AddListener<SelectEntry>(OnSelectEntry);
+        EventsManager.AddListener<OnUnlockedEntry>(OnUnlockEntry);
+        EventsManager.AddListener<OnSelectEntry>(OnSelectEntry);
 
         EventsManager.AddListener<OnGameStateChanged>(OnGameStateChanged);
 
         InputManager.Instance.UI.NextPage.performed += ctx => OnNextPage();
         InputManager.Instance.UI.PreviousPage.performed += ctx => OnPreviousPage();
 
+        inputTextHolder.text = $"[{codexInput.action.GetBindingDisplayString()}]";
+
     }
 
     private void OnDisable()
     {
-        EventsManager.RemoveListener<UnlockEntry>(OnUnlockEntry);
-        EventsManager.RemoveListener<SelectEntry>(OnSelectEntry);
+        EventsManager.RemoveListener<OnUnlockedEntry>(OnUnlockEntry);
+        EventsManager.RemoveListener<OnSelectEntry>(OnSelectEntry);
 
         EventsManager.RemoveListener<OnGameStateChanged>(OnGameStateChanged);
 
@@ -79,12 +89,14 @@ public class Codex : MonoBehaviour
         pagesSection.SetActive(true);
     }
 
-    void OnUnlockEntry(UnlockEntry evt)
+    void OnUnlockEntry(OnUnlockedEntry evt)
     {
         Debug.Log($"UNLOCKING ENTRY {evt.Entry.name}");
 
         if (unlockedEntries.Contains(evt.Entry))
             return;
+        EventsManager.Broadcast(new OnEntryAdded { Entry = evt.Entry });
+
         //Instantiate Page
         GameObject _pageObject = Instantiate(pagePrefab, pagesSection.transform);
         _pageObject.GetComponent<Page>().SetInformation(evt.Entry);
@@ -96,7 +108,7 @@ public class Codex : MonoBehaviour
         unlockedEntries.Add(evt.Entry);
     }
 
-    void OnSelectEntry(SelectEntry evt)
+    void OnSelectEntry(OnSelectEntry evt)
     {
         ShowEntry(evt.PageEntryIndex);
         currentIndex = evt.PageEntryIndex;

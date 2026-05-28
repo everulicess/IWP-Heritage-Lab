@@ -25,11 +25,15 @@ public class OnGameStateChanged : Event
 
 #region CODEX EVENTS 
 //CODEX EVENTS
-public class UnlockEntry : Event
+public class OnUnlockedEntry : Event
 {
     public CodexEntry Entry;
 }
-public class SelectEntry : Event
+public class OnEntryAdded : Event
+{
+    public CodexEntry Entry;
+}
+public class OnSelectEntry : Event
 {
     public int PageEntryIndex;
 }
@@ -51,7 +55,7 @@ public class OnNotifyTutorialStepEvent : Event
 #endregion
 
 #region PUZZLE EVENTS
-public class PuzzleStateChanged : Event
+public class OnPuzzleStateChanged : Event
 {
     public Puzzle puzzle;
     public PuzzleState state;
@@ -81,7 +85,7 @@ public class OnExamineObject : Event
 #region INTERACTION EVENT
 public class OnInteractionPrompt : Event
 {
-    public InteractableObject Interactable;
+    public InteractableObject InteractableObject;
     public bool ShowPrompt;
 }
 #endregion
@@ -97,3 +101,11 @@ public class OnEMFDetection : Event
     public float EMFDetectionDistance = 10f;
 }
 #endregion
+
+public class OnNotification : Event
+{
+    public NotificationCategory NotificationCategory;
+    public PuzzleID PuzzleID = PuzzleID.None;
+    public bool isRelic = false;
+    public CodexEntry Entry = null;
+}

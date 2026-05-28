@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         EventsManager.AddListener<OnCodexOpened>(OnCodexOpened);
         EventsManager.AddListener<OnCodexClosed>(OnCodexClosed);
-        EventsManager.AddListener<PuzzleStateChanged>(OnPuzzleStateChanged);
+        EventsManager.AddListener<OnPuzzleStateChanged>(OnPuzzleStateChanged);
         EventsManager.AddListener<OnGateInteraction>(OnWinningCheckCondition);
         SetState(GameState.Gameplay);
 
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         EventsManager.RemoveListener<OnCodexOpened>(OnCodexOpened);
         EventsManager.RemoveListener<OnCodexClosed>(OnCodexClosed);
-        EventsManager.RemoveListener<PuzzleStateChanged>(OnPuzzleStateChanged);
+        EventsManager.RemoveListener<OnPuzzleStateChanged>(OnPuzzleStateChanged);
         EventsManager.RemoveListener<OnGateInteraction>(OnWinningCheckCondition);
 
 
@@ -40,16 +40,18 @@ public class GameManager : MonoBehaviour
     public void SetState(GameState newState)
     {
         previousState = currentState;
-        //Debug.Log($"CURRENT GAME STATE {newState}");
         currentState = newState;
+
+        EventsManager.Broadcast(new OnGameStateChanged { NewState = newState, PreviousState = previousState });
 
         Time.timeScale = newState == GameState.Paused ? 0.0f : 1.0f;
 
-        EventsManager.Broadcast(new OnGameStateChanged { NewState = newState, PreviousState = previousState });
+        Debug.Log($"CURRENT GAME STATE {newState}");
+
     }
     public void TogglePause()
     {
-        if (currentState == GameState.Paused)
+        if (currentState == GameState.Paused && Time.timeScale == 0.0f)
             SetState(previousState);
         else
             SetState(GameState.Paused);
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
         puzzles.Add(piece);
     }
 
-    private void OnPuzzleStateChanged(PuzzleStateChanged evt)
+    private void OnPuzzleStateChanged(OnPuzzleStateChanged evt)
     {
         if (evt.state == PuzzleState.Solved)
             SolvedPuzzlesCount++;
