@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         EventsManager.Broadcast(new OnGameStateChanged { NewState = newState, PreviousState = previousState });
 
-        Time.timeScale = newState == GameState.Paused ? 0.0f : 1.0f;
+        Time.timeScale = newState == GameState.Paused || newState ==GameState.Codex /*|| newState == GameState.Cutscene*/ ? 0.0f : 1.0f;
 
         Debug.Log($"CURRENT GAME STATE {newState}");
 

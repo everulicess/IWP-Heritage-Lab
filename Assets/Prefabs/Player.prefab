@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlashlightController
   toolID: 0
+  toolSound: {fileID: 0}
 --- !u!108 &4218481841896142812
 Light:
   m_ObjectHideFlags: 0
@@ -419,7 +420,7 @@ MonoBehaviour:
   jumpForce: 10
   groundDrag: 8
   airDrag: 1
-  mouseSensitivity: 0.1
+  mouseSensitivity: 25
   verticalClamp: 85
   cameraTransform: {fileID: 8240828119543302011}
   groundMask:
@@ -703,6 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EMFDetectorController
   toolID: 0
+  toolSound: {fileID: 0}
   detectionDistance: 10
 --- !u!1 &5781587920872117650
 GameObject:

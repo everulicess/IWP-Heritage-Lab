@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: ba6b64985e27af540860b04270b5acb7
   - enabled: 1
-    path: Assets/Scenes/Ever Scene Outdated.unity
-    guid: d8cd30ad5d9a3ee48bce4633d894cacd
+    path: Assets/Scenes/Ever Scene.unity
+    guid: 3cf5f282e87e3b14f8d14a40dc7a133b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

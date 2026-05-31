@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
@@ -40,8 +41,9 @@ public class Player : MonoBehaviour
     Vector2 _moveInput;
     Vector2 _lookInput;
     float _cameraPitch;
+    float _yaw; // add this
     bool _isGrounded;
-
+    Vector3 _moveDirection; // add this field
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
 
         //Check for missing references
         if (cameraTransform == null) Debug.LogError($"Missing Reference {nameof(cameraTransform)} in {gameObject.name}");
+
+        _yaw = transform.eulerAngles.y;
     }
     private void OnEnable()
     {
@@ -83,6 +87,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleLook();
+        _moveDirection = transform.right * _moveInput.x + transform.forward * _moveInput.y;
         CheckGround();
         ApplyDrag();
     }
@@ -126,18 +131,19 @@ public class Player : MonoBehaviour
 #region LOOKING AND MOVEMENT
     void HandleLook()
     {
-        transform.Rotate(Vector3.up, _lookInput.x * mouseSensitivity, Space.World);
+        // Horizontal: rotate the camera holder, NOT the rigidbody
+        _yaw += _lookInput.x * mouseSensitivity * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0f, _yaw, 0f);
 
-        _cameraPitch -= _lookInput.y * mouseSensitivity;
+        // Vertical: pitch only the camera
+        _cameraPitch -= _lookInput.y * mouseSensitivity * Time.deltaTime;
         _cameraPitch = Mathf.Clamp(_cameraPitch, -verticalClamp, verticalClamp);
         cameraTransform.localRotation = Quaternion.Euler(_cameraPitch, 0f, 0f);
     }
     void HandleMovement()
     {
-        Vector3 move = transform.right * _moveInput.x + transform.forward * _moveInput.y;
-        _rb.AddForce(move * moveSpeed, ForceMode.VelocityChange);
+        _rb.AddForce(_moveDirection * moveSpeed, ForceMode.VelocityChange);
 
-        // Clamp horizontal speed so the player doesn't accelerate forever
         Vector3 flat = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         if (flat.magnitude > moveSpeed)
         {

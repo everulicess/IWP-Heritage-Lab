@@ -15,15 +15,20 @@ public class UIMenus : MonoBehaviour
     [Space]
     [Header("Interaction Text")]
     [SerializeField] GameObject interactionText;
+    [Space]
+    [Header("Tool Text")]
+    [SerializeField] GameObject UseToolText;
     private void OnEnable()
     {
         EventsManager.AddListener<OnGateInteraction>(OnFinishedGameInteraction);
         EventsManager.AddListener<OnGameStateChanged>(OnGameStateChanged);
         EventsManager.AddListener<OnInteractionPrompt>(InteractionPrompt);
+        EventsManager.AddListener<OnExamineObject>(UpdateUseTools);
 
         winningScreen.SetActive(false);
         gateScreen.SetActive(false);
         interactionText.SetActive(false);
+        UseToolText.SetActive(true);
     }
 
     private void InteractionPrompt(OnInteractionPrompt evt)
@@ -36,8 +41,16 @@ public class UIMenus : MonoBehaviour
         EventsManager.RemoveListener<OnGateInteraction>(OnFinishedGameInteraction);
         EventsManager.RemoveListener<OnGameStateChanged>(OnGameStateChanged);
         EventsManager.RemoveListener<OnInteractionPrompt>(InteractionPrompt);
+        EventsManager.RemoveListener<OnExamineObject>(UpdateUseTools);
+
 
     }
+
+    private void UpdateUseTools(OnExamineObject evt)
+    {
+        UseToolText.SetActive(!evt.StartExamination);
+    }
+
     private void OnFinishedGameInteraction(OnGateInteraction evt)
     {
         if (evt.GateOpened)
