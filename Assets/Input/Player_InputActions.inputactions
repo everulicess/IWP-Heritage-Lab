@@ -478,6 +478,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PlaySound",
+                    "type": "Button",
+                    "id": "4acc81f7-4f54-476b-a2d0-320a173815fa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -489,6 +498,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1da3b183-5de9-4f9d-a7d1-978f91034994",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaySound",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -28,7 +28,7 @@ public class LightPuzzlePiece : PuzzlePiece
         ApplyVisualState();
     }
 
-    public override void Interact()
+    protected override void Interact()
     {
         if (!CanInteract)
         {

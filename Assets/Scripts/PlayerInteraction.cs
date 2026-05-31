@@ -11,6 +11,9 @@ public class PlayerInteraction : MonoBehaviour
     InteractableObject _currentTarget;
     bool isExamining = false;
 
+    [Space]
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip interactSound;
     public void Init(Transform cameraTransform)
     {
         _cameraTransform = cameraTransform;
@@ -19,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
     private void OnEnable()
     {
         InputManager.Instance.Player.Interact.performed += ctx => TryInteract();
+        source.clip = interactSound;
 
         EventsManager.AddListener<OnExamineObject>(SetExamineStatus);
     }
@@ -64,6 +68,10 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryInteract()
     {
-        _currentTarget?.Interact();
+        if (_currentTarget)
+        {
+            _currentTarget?.Interact();
+            source.Play();
+        }
     }
 }

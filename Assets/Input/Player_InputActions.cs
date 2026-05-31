@@ -564,6 +564,15 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlaySound"",
+                    ""type"": ""Button"",
+                    ""id"": ""4acc81f7-4f54-476b-a2d0-320a173815fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -575,6 +584,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1da3b183-5de9-4f9d-a7d1-978f91034994"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlaySound"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -608,6 +628,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
+        m_Global_PlaySound = m_Global.FindAction("PlaySound", throwIfNotFound: true);
     }
 
     ~@Player_InputActions()
@@ -1059,6 +1080,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Global;
     private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
     private readonly InputAction m_Global_Pause;
+    private readonly InputAction m_Global_PlaySound;
     /// <summary>
     /// Provides access to input actions defined in input action map "Global".
     /// </summary>
@@ -1074,6 +1096,10 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Global/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_Global_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "Global/PlaySound".
+        /// </summary>
+        public InputAction @PlaySound => m_Wrapper.m_Global_PlaySound;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1103,6 +1129,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @PlaySound.started += instance.OnPlaySound;
+            @PlaySound.performed += instance.OnPlaySound;
+            @PlaySound.canceled += instance.OnPlaySound;
         }
 
         /// <summary>
@@ -1117,6 +1146,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @PlaySound.started -= instance.OnPlaySound;
+            @PlaySound.performed -= instance.OnPlaySound;
+            @PlaySound.canceled -= instance.OnPlaySound;
         }
 
         /// <summary>
@@ -1306,5 +1338,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PlaySound" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlaySound(InputAction.CallbackContext context);
     }
 }

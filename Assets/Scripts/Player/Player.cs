@@ -23,10 +23,16 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] float groundCheckDistance;
 
-    //[Space]
-    //[Header("Interaction")]
-    //[SerializeField] LayerMask interactableMask;
-    //[SerializeField] float interactableDistance = 3.0f;
+    [Space]
+    [Header("Footsteps")]
+    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioClip outdoorFootstep;
+    [SerializeField] private AudioClip indoorFootstep;
+    [SerializeField] private LayerMask indoorMask;
+    [SerializeField] private float stepInterval = 0.45f;
+
+    private float stepTimer;
+    RaycastHit _groundHit;
 
     Rigidbody _rb;
     CapsuleCollider _capsuleCollider;
@@ -80,9 +86,42 @@ public class Player : MonoBehaviour
         CheckGround();
         ApplyDrag();
     }
+
+    private void HandleFootsteps()
+    {
+        bool isMoving = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z).magnitude > 0.1f;
+
+        if (_isGrounded && isMoving)
+        {
+            bool isIndoor = (indoorMask.value & (1 << _groundHit.collider.gameObject.layer)) != 0;
+            AudioClip clip = isIndoor ? indoorFootstep : outdoorFootstep;
+
+            if (footstepSource.clip != clip)
+            {
+                footstepSource.Stop();
+                footstepSource.clip = clip;
+                footstepSource.Play();
+                stepTimer = stepInterval;
+            }
+
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                footstepSource.Play();
+                stepTimer = stepInterval;
+            }
+        }
+        else
+        {
+            stepTimer = stepInterval;
+            footstepSource.Stop();
+        }
+    }
+
     private void FixedUpdate()
     {
         HandleMovement();
+        HandleFootsteps();
     }
 #region LOOKING AND MOVEMENT
     void HandleLook()
@@ -110,7 +149,7 @@ public class Player : MonoBehaviour
     {
         float capsuleHalfHeight = _capsuleCollider.height / 2f;
 
-        _isGrounded = Physics.SphereCast( transform.position, 0.4f, Vector3.down, out _, capsuleHalfHeight + groundCheckDistance, groundMask);
+        _isGrounded = Physics.SphereCast( transform.position, 0.4f, Vector3.down, out _groundHit, capsuleHalfHeight + groundCheckDistance, groundMask);
     }
     void ApplyDrag()
     {
