@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class StatuePuzzlePiece : PuzzlePiece
@@ -10,6 +11,12 @@ public class StatuePuzzlePiece : PuzzlePiece
 
     [Tooltip("Degrees rotated per interaction.")]
     [SerializeField] float rotationStep = 45f;
+
+    [Header("Audio")]
+    [Space]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] rotatingSounds;
+    bool isRotating = false;
     public override bool IsInCorrectState{
         get
         {
@@ -22,12 +29,35 @@ public class StatuePuzzlePiece : PuzzlePiece
     {
         base.Awake();
     }
-    public override void Interact()
+    protected override void Interact()
     {
         if (!CanInteract) return;
-        transform.Rotate(Vector3.up, rotationStep, Space.World);
+        if (isRotating) return;
+        isRotating = true;
 
-        
+        AudioClip clip = rotatingSounds[Random.Range(0, rotatingSounds.Length)];
+        audioSource.clip = clip;
+        audioSource.Play();
+
+        StartCoroutine(RotateForClipDuration(rotationStep));
+    }
+    IEnumerator RotateForClipDuration(float targetAngle)
+    {
+        float elapsed = 0f;
+        float duration = audioSource.clip.length;
+        Quaternion startRot = transform.rotation;
+        Quaternion endRot = startRot * Quaternion.Euler(0f, targetAngle, 0f);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(startRot, endRot, elapsed / duration);
+            yield return null;
+        }
+
+        transform.rotation = endRot;
+        isRotating = false;
         NotifyStateChanged();
+
     }
 }

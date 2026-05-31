@@ -27,6 +27,7 @@ public class StudyPuzzle : Puzzle
     protected override void OnSolved()
     {
         base.OnSolved();
+        feedbackText.text = "";
         tutorialStepTrigger.TriggerStep();
         interactable.Interact();
 

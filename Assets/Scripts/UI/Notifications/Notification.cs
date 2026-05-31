@@ -33,5 +33,7 @@ public struct NotificationInfo
     public NotificationCategory Categoy;
     public Color Color;
     [HideInInspector] public string textToDisplay;
+    public AudioClip audioClip;
+
 
 }

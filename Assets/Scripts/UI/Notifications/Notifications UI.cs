@@ -9,12 +9,18 @@ public class NotificationsUI : MonoBehaviour
     [SerializeField] NotificationInfo[] notificationPresets;
     [SerializeField] GameObject notificationPrefab;
     [SerializeField] VerticalLayoutGroup verticalGroupLayout;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip theSound;
 
     private void OnEnable()
     {
         EventsManager.AddListener<OnPuzzleStateChanged>(CreatePuzzleNotification);
 
         EventsManager.AddListener<OnEntryAdded>(CreateEntryNoticfication);
+
+        EventsManager.AddListener<OnGameStateChanged>(CreateGameStateNotification);
+
+        InputManager.Instance.Global.PlaySound.performed += ctx => PlaySound();
 
         if (notificationPrefab == null)
             Debug.LogError($"MISSING REFRENCE FOR {notificationPrefab.name} IN {this.gameObject}");
@@ -23,11 +29,27 @@ public class NotificationsUI : MonoBehaviour
         if (notificationPresets.Count() <= 0)
             Debug.LogError($"MISSING REFRENCEs FOR {notificationPresets} IN {this.gameObject}");
     }
+
+    private void PlaySound()
+    {
+        source.clip = theSound;
+        source.Play();
+    }
+
     private void OnDisable()
     {
         EventsManager.RemoveListener<OnEntryAdded>(CreateEntryNoticfication);
         EventsManager.RemoveListener<OnPuzzleStateChanged>(CreatePuzzleNotification);
+        EventsManager.RemoveListener<OnGameStateChanged>(CreateGameStateNotification);
 
+
+    }
+
+    private void CreateGameStateNotification(OnGameStateChanged evt)
+    {
+        if (evt.NewState != GameState.Finished)
+            return;
+        CreateNotification( NotificationCategory.PuzzleFinished, "Game Finished!!!!!!");
     }
 
     private void CreatePuzzleNotification(OnPuzzleStateChanged evt)
@@ -49,6 +71,8 @@ public class NotificationsUI : MonoBehaviour
         GameObject noti = Instantiate(notificationPrefab, verticalGroupLayout.transform);
         NotificationInfo infoToPass = GetNotificationPresets(category);
         infoToPass.textToDisplay = displayText;
+        source.clip = infoToPass.audioClip;
+        source.Play();
         noti.GetComponent<Notification>().InitializeNotification(infoToPass);
     }
     NotificationInfo GetNotificationPresets(NotificationCategory category)

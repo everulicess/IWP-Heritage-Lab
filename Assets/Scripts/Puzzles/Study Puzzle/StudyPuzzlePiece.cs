@@ -29,7 +29,7 @@ public class StudyPuzzlePiece : PuzzlePiece
         selectedCrestId = evt.carriedID;
         Debug.Log($"new crest is set to {selectedCrestId}");
     }
-    public override void Interact()
+    protected override void Interact()
     {
         if (!CanInteract) return;
         placedCrestId = selectedCrestId;

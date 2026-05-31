@@ -42,11 +42,15 @@ public abstract class PuzzlePiece : MonoBehaviour
         if (evt.puzzle != parentPuzzle)
             return;
         interactable.canBeInteracted = evt.state != PuzzleState.Solved;
-        EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false});
+        EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false });
     }
 
     public abstract bool IsInCorrectState { get; }
-    public abstract void Interact();
+    protected virtual void Interact()
+    {
+        EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = interactable.canBeInteracted });
+
+    }
 
     public virtual bool CanInteract =>
         parentPuzzle == null || (parentPuzzle.IsActive && !parentPuzzle.IsSolved);

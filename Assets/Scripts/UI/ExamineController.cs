@@ -9,6 +9,7 @@ public class ExamineController : MonoBehaviour
     private bool examine = false;
     private Vector2 _lookInput;
     [SerializeField] GameObject target;
+    [SerializeField] GameObject inspectingText;
     [SerializeField] float rotationSpeed = 6.0f;
     [SerializeField] Button exitButton;
     [SerializeField] float targetSize = 1.0f;
@@ -20,6 +21,8 @@ public class ExamineController : MonoBehaviour
 
         InputManager.Instance.UI.Examine.performed += ctx => _lookInput = ctx.ReadValue<Vector2>();
         InputManager.Instance.UI.Examine.canceled += ctx => _lookInput = Vector2.zero;
+
+        inspectingText.SetActive(false);
 
         exitButton.onClick.AddListener(ExitExamineState);
     }
@@ -37,6 +40,7 @@ public class ExamineController : MonoBehaviour
         if (evt.Target == null)
             return;
         //target.transform.Rotate() I need to reset rotation everytime the object is inspected
+        inspectingText.SetActive(true);
         target.GetComponent<MeshFilter>().mesh = evt.Target.GetComponent<MeshFilter>().mesh;
         target.GetComponent<Renderer>().materials = evt.Target.GetComponent<Renderer>().materials;
         target.SetActive(true);
@@ -70,6 +74,7 @@ public class ExamineController : MonoBehaviour
         examine = false;
         target.SetActive(false);
         exitButton.gameObject.SetActive(false);
+        inspectingText.SetActive(false);
         EventsManager.Broadcast(new OnExamineObject { StartExamination = false });
 
     }
