@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnWinningCheckCondition(OnGateInteraction evt)
     {
-        Debug.LogError($"GATE OPENED {evt.GateOpened}");
+        Debug.Log($"GATE OPENED {evt.GateOpened}");
         if (evt.GateOpened)
             SetState(GameState.WinningScreen);
     }

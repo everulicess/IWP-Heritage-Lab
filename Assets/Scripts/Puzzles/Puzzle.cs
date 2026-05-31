@@ -103,6 +103,7 @@ public abstract class Puzzle : MonoBehaviour
     {
         if (!IsActive || IsSolved) return;
         if (CheckSolution()) Solve();
+        else Fail();
     }
 
     protected virtual bool CheckSolution()

@@ -1,10 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StudyPuzzle : Puzzle
 {
     [SerializeField] List<GameObject> objectsToActivateWhenSolved = new();
     [SerializeField] List<GameObject> objectsToDeactivateWhenSolved = new();
+    [SerializeField] TextMeshProUGUI feedbackText;
     private TutorialStepTrigger tutorialStepTrigger;
     private InteractableObject interactable;
 
@@ -40,6 +43,15 @@ public class StudyPuzzle : Puzzle
     }
     protected override void OnFailed()
     {
+
         base.OnFailed();
+        StartCoroutine(FeedbackRoutine());
+    }
+    IEnumerator FeedbackRoutine()
+    {
+        feedbackText.text = $"Wrong Crest!";
+        yield return new WaitForSeconds(1.0f);
+        feedbackText.text = $"";
+
     }
 }

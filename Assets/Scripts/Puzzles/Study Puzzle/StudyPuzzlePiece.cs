@@ -41,5 +41,9 @@ public class StudyPuzzlePiece : PuzzlePiece
             Destroy(interactable);
             EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false });
         }
+        else
+        {
+            
+        }
     }
 }

@@ -36,6 +36,7 @@ public class ExamineController : MonoBehaviour
         examine = evt.StartExamination;
         if (evt.Target == null)
             return;
+        //target.transform.Rotate() I need to reset rotation everytime the object is inspected
         target.GetComponent<MeshFilter>().mesh = evt.Target.GetComponent<MeshFilter>().mesh;
         target.GetComponent<Renderer>().materials = evt.Target.GetComponent<Renderer>().materials;
         target.SetActive(true);
