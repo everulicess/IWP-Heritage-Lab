@@ -17,4 +17,5 @@ MonoBehaviour:
     and personal belongings. They were commonly used for travel or long-term storage
     before modern suitcases became widespread. In large households, trunks also served
     as a way to organize seasonal clothing or transport possessions between estates. '
-  illustration: {fileID: 21300000, guid: 332d22d255d23d04d8151dbb86c0baa3, type: 3}
+  illustration: {fileID: 21300000, guid: b38fbf76e42b84d4c951276f93283fed, type: 3}
+  isRelic: 0
