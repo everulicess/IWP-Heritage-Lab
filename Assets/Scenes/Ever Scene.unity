@@ -3035,6 +3035,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 591574e8da54d5c49a8bd88d5eb3f08c, type: 3}
+--- !u!114 &1443468297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4122091722536474007, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+  m_PrefabInstance: {fileID: 5029522196213882433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1519250823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7652,6 +7663,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -226.79167
       objectReference: {fileID: 0}
+    - target: {fileID: 2386573738545495063, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424563243992765225, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: ExitButton
+      value: 
+      objectReference: {fileID: 1443468297}
     - target: {fileID: 2424563243992765225, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: UseToolText
       value: 
@@ -7855,6 +7874,22 @@ PrefabInstance:
     - target: {fileID: 5572168091837955250, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: steps.Array.data[0].onStepStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391485251269476537, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9158856
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391485251269476537, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7540853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391485251269476537, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9158856
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391485251269476537, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 181
       objectReference: {fileID: 0}
     - target: {fileID: 6595749909072126554, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: m_AnchorMax.y

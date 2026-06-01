@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIMenus : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIMenus : MonoBehaviour
     [Space]
     [Header("Pause")]
     [SerializeField] GameObject pauseOverlay;
+    [SerializeField] Button ExitButton;
     [Space]
     [Header("Interaction Text")]
     [SerializeField] GameObject interactionText;
@@ -29,6 +31,8 @@ public class UIMenus : MonoBehaviour
         gateScreen.SetActive(false);
         interactionText.SetActive(false);
         UseToolText.SetActive(true);
+
+        ExitButton.onClick.AddListener(QuitGame);
     }
 
     private void InteractionPrompt(OnInteractionPrompt evt)
@@ -45,7 +49,16 @@ public class UIMenus : MonoBehaviour
 
 
     }
-
+    private void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+        Application.OpenURL(webplayerQuitURL);
+#else
+        Application.Quit();
+# endif
+    }
     private void UpdateUseTools(OnExamineObject evt)
     {
         UseToolText.SetActive(!evt.StartExamination);
