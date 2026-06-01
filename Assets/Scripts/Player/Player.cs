@@ -92,6 +92,10 @@ public class Player : MonoBehaviour
         ApplyDrag();
     }
 
+	public void changeSensitivity(float newSensitivity)
+	{
+		mouseSensitivity = newSensitivity;
+	}
     private void HandleFootsteps()
     {
         bool isMoving = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z).magnitude > 0.1f;
