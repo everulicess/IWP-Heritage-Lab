@@ -6,6 +6,7 @@ public class LightPuzzle : Puzzle
     [SerializeField] GameObject inactiveBed;
     [SerializeField] GameObject activeBed;
     [SerializeField] GameObject finalRelic;
+    [SerializeField] GameObject studyTempDoors;
 
     private TutorialStepTrigger tutorialStepTrigger;
 
@@ -44,6 +45,13 @@ public class LightPuzzle : Puzzle
             activeBed.SetActive(true);
             finalRelic.SetActive(true);
         }
+
+  	// Deactivate temp doors in study
+        if (studyTempDoors != null)
+        {
+            studyTempDoors.SetActive(false);
+        }
+
 
         tutorialStepTrigger.TriggerStep();
 
