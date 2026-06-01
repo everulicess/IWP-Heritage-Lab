@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2943f55dfdc394fbf06a1515bab41e, type: 3}
-  m_Name: Main Hall
+  m_Name: Courtyard
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
-  title: Main Hall
-  description: This is the main hall of the Menkemaborg. It divides the castle into
-    two halves and serves a a place to display valuable paintings and other relics
-    in display cases.
-  illustration: {fileID: 21300000, guid: 2c8cbf10058d1494d86bd9a49f0c8dd0, type: 3}
+  title: Courtyard
+  description: 'This is the courtyard of the Menkemaborg. It features a cafe nowadays.
+    There might also be statues of lions around here somewhere... '
+  illustration: {fileID: 21300000, guid: d4228ba55b0b97a47b4b4e151d677b54, type: 3}
   isRelic: 0

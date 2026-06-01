@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Menkemaborg Lions
   m_EditorClassIdentifier: Assembly-CSharp::Codex
   title: Lions
-  description: 'Gardens at country estates served both practical and aesthetic purposes.
-    They were used to grow herbs, vegetables, and sometimes fruit, supporting household
-    needs. At the same time, gardens were carefully designed to demonstrate control
-    over nature and reflect the wealth and status of the estate owner. '
+  description: 'These statues at the front of the entrance to the castle were originally
+    placed at a different castle owned by the Alberda family. When they lost ownership
+    of this other castle, the lions were moved here. Something about the way they
+    were placed seems off... '
   illustration: {fileID: 21300000, guid: eede8fc4876c4c44697774166e826c49, type: 3}
+  isRelic: 0

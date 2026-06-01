@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da2943f55dfdc394fbf06a1515bab41e, type: 3}
-  m_Name: Main Hall
+  m_Name: Reception
   m_EditorClassIdentifier: Assembly-CSharp::CodexEntry
-  title: Main Hall
-  description: This is the main hall of the Menkemaborg. It divides the castle into
-    two halves and serves a a place to display valuable paintings and other relics
-    in display cases.
-  illustration: {fileID: 21300000, guid: 2c8cbf10058d1494d86bd9a49f0c8dd0, type: 3}
+  title: Reception
+  description: In this room, guests would be seated when they first arrived to the
+    Menkemaborg. Once the lord was ready to meet the guests, they would head here
+    to greet them.
+  illustration: {fileID: 21300000, guid: dc0090adf8992ef4f9dfc22a11032381, type: 3}
   isRelic: 0
