@@ -3318,6 +3318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExaminableObject
   objectToExamine: {fileID: 1392056723}
+  objectToExamineRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
 --- !u!114 &1550409074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7518,9 +7519,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1649429182792618862, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2684131317103016925, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
       propertyPath: m_Name
       value: Study Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018105210476933140, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018105210476933140, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253133929269558854, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253133929269558854, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489216280222140724, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489216280222140724, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601181433346760439, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601181433346760439, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5839861290249957576, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
       propertyPath: 'roomLights.Array.data[0]'
@@ -7558,9 +7595,25 @@ PrefabInstance:
       propertyPath: 'objectsToDeactivateWhenSolved.Array.data[1]'
       value: 
       objectReference: {fileID: 1719275378}
+    - target: {fileID: 6318373355519018223, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318373355519018223, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7875826840712038281, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702058813536928429, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.w
+      value: -0.00000004371139
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702058813536928429, guid: c73549bf4184a4a428dd9d04c15435b4, type: 3}
+      propertyPath: objectToExamineRotation.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7660,6 +7713,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1668226970693696193, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
+      propertyPath: near clip plane
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1705210996461332125, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8233,6 +8290,26 @@ PrefabInstance:
     - target: {fileID: 1531146348374844988, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370470059753761021, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344094180424966015, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: airDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344094180424966015, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344094180424966015, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: groundDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344094180424966015, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: groundCheckDistance
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8443025272998110328, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: toolSound

@@ -6,6 +6,8 @@ public class ExaminableObject : MonoBehaviour
 {
    InteractableObject interactableObject;
     [SerializeField] GameObject objectToExamine;
+    [Tooltip("Set the rotation that should be used in the inspecting mode.")]
+    [SerializeField] Quaternion objectToExamineRotation;
     private void OnEnable()
     {
         interactableObject = GetComponent<InteractableObject>();
@@ -20,6 +22,6 @@ public class ExaminableObject : MonoBehaviour
     {
         if (objectToExamine == null)
             Debug.Log($"Missing a refernce for {nameof(objectToExamine)}");
-        EventsManager.Broadcast(new OnExamineObject { Target = objectToExamine, StartExamination = true });
+        EventsManager.Broadcast(new OnExamineObject { Target = objectToExamine, StartExamination = true, TargetInitialInspectRotation = objectToExamineRotation });
     }
 }

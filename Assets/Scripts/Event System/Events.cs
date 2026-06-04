@@ -78,6 +78,7 @@ public class OnGateInteraction : Event
 public class OnExamineObject : Event
 {
     public GameObject Target;
+    public Quaternion TargetInitialInspectRotation = Quaternion.identity;
     public bool StartExamination;
 }
 #endregion

@@ -12,7 +12,7 @@ public class EntryButton : MonoBehaviour
     private void Awake()
     {
         RectTransform rect = GetComponent<RectTransform>();
-        Debug.LogError($"Button {gameObject.name} - Rect: {rect.rect}, Corners: {GetCorners()}");
+        //Debug.LogError($"Button {gameObject.name} - Rect: {rect.rect}, Corners: {GetCorners()}");
     }
     public void SetPageIndex(CodexEntry entry, int _pageIndex)
     {

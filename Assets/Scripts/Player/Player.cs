@@ -164,11 +164,11 @@ public class Player : MonoBehaviour
     void ApplyDrag()
     {
         _rb.linearDamping = _isGrounded ? groundDrag : airDrag;
+
     }
     void TryJump()
     {
         if (!_isGrounded) return;
-        // Reset Y velocity before jumping for consistent jump height
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
