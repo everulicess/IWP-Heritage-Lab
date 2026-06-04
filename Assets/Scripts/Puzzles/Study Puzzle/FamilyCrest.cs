@@ -21,7 +21,8 @@ public class FamilyCrest : MonoBehaviour
     private void CrestState(CarriedCrest evt)
     {
         crest.SetActive(crestID != evt.carriedID);
-        interactable.enabled = crestID != evt.carriedID;
+        interactable.canBeInteracted = crestID != evt.carriedID;
+        //interactable.enabled = ;
     }
 
     private void Interact()
