@@ -6,6 +6,7 @@ public class StudyPuzzlePiece : PuzzlePiece
     [SerializeField] CrestID correctCrestId;
     CrestID selectedCrestId;
      CrestID placedCrestId;
+
     public override bool IsInCorrectState
     {
         get 
@@ -27,6 +28,7 @@ public class StudyPuzzlePiece : PuzzlePiece
     private void SetCurrentCrest(CarriedCrest evt)
     {
         selectedCrestId = evt.carriedID;
+
         Debug.Log($"new crest is set to {selectedCrestId}");
     }
     protected override void Interact()
@@ -41,9 +43,9 @@ public class StudyPuzzlePiece : PuzzlePiece
             Destroy(interactable);
             EventsManager.Broadcast(new OnInteractionPrompt { ShowPrompt = false });
         }
-        else
-        {
-            
-        }
+        selectedCrestId = CrestID.None;
+        EventsManager.Broadcast(new CarriedCrest { carriedID = CrestID.None });
+
+
     }
 }

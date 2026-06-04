@@ -7,6 +7,7 @@ public class StudyPuzzle : Puzzle
 {
     [SerializeField] List<GameObject> objectsToActivateWhenSolved = new();
     [SerializeField] List<GameObject> objectsToDeactivateWhenSolved = new();
+    [SerializeField] List<GameObject> objectsToActivateWhenFailed = new();
     [SerializeField] TextMeshProUGUI feedbackText;
     private TutorialStepTrigger tutorialStepTrigger;
     private InteractableObject interactable;
@@ -47,6 +48,8 @@ public class StudyPuzzle : Puzzle
 
         base.OnFailed();
         StartCoroutine(FeedbackRoutine());
+        foreach(var item in objectsToActivateWhenFailed)
+            item.SetActive(true);
     }
     IEnumerator FeedbackRoutine()
     {

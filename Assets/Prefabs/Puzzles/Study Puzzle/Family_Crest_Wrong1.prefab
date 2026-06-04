@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FamilyCrest
   crestID: 11
+  crest: {fileID: 7896121870154197472}
 --- !u!114 &4952016867957887307
 MonoBehaviour:
   m_ObjectHideFlags: 0

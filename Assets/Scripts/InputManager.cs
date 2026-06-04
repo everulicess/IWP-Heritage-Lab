@@ -25,15 +25,19 @@ public class InputManager : MonoBehaviour
         {
             case GameState.Gameplay:
                 SwitchToGameplay();
+                Time.timeScale = 1.0f;
                 break;
             case GameState.Codex:
                 SwitchToUI();
+                Time.timeScale = 0f;
                 break;
             case GameState.Paused:
                 SwitchToUI();
+                Time.timeScale = 0f;
                 break;
-            case GameState.Cutscene:
+            case GameState.Inspecting:
                 SwitchToUI();
+                Time.timeScale = 1.0f;
                 break;
             case GameState.Tutorial:
             case GameState.Finished:
@@ -41,6 +45,7 @@ public class InputManager : MonoBehaviour
                 break;
             case GameState.WinningScreen:
                 SwitchToUI();
+                Time.timeScale = 0f;
                 break;
         }
     }
@@ -49,7 +54,7 @@ public class InputManager : MonoBehaviour
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         _actions = new Player_InputActions();
         _actions.Global.Enable();
@@ -61,6 +66,7 @@ public class InputManager : MonoBehaviour
 
     public void SwitchToGameplay()
     {
+
         _actions.UI.Disable();
         _actions.Player.Enable();
         Cursor.visible = false;

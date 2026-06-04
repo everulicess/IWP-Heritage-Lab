@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
@@ -44,15 +43,15 @@ public class GameManager : MonoBehaviour
 
         EventsManager.Broadcast(new OnGameStateChanged { NewState = newState, PreviousState = previousState });
 
-        Time.timeScale = newState == GameState.Paused || newState ==GameState.Codex /*|| newState == GameState.Cutscene*/ ? 0.0f : 1.0f;
+        //Time.timeScale = newState == GameState.Paused || newState == GameState.Codex /*|| newState == GameState.Cutscene*/ ? 0.0f : 1.0f;
 
         Debug.Log($"CURRENT GAME STATE {newState}");
 
     }
     public void TogglePause()
     {
-        if (currentState == GameState.Paused && Time.timeScale == 0.0f)
-            SetState(previousState);
+        if (currentState == GameState.Paused /*&& Time.timeScale == 0.0f*/)
+            SetState(GameState.Gameplay);
         else
             SetState(GameState.Paused);
     }

@@ -29,11 +29,27 @@ public class ExamineController : MonoBehaviour
     private void OnEnable()
     {
         EventsManager.AddListener<OnExamineObject>(Examine);
+        EventsManager.AddListener<OnGameStateChanged>(UpdateOnGameStateChanged);
+
     }
     private void OnDisable()
     {
         EventsManager.RemoveListener<OnExamineObject>(Examine);
+        EventsManager.RemoveListener<OnGameStateChanged>(UpdateOnGameStateChanged);
+
     }
+
+    private void UpdateOnGameStateChanged(OnGameStateChanged evt)
+    {
+        if (evt.NewState != GameState.Inspecting)
+        {
+            examine = false;
+            target.SetActive(false);
+            exitButton.gameObject.SetActive(false);
+            inspectingText.SetActive(false);
+        }
+    }
+
     private void Examine(OnExamineObject evt)
     {
         examine = evt.StartExamination;
@@ -45,7 +61,7 @@ public class ExamineController : MonoBehaviour
         target.GetComponent<Renderer>().materials = evt.Target.GetComponent<Renderer>().materials;
         target.SetActive(true);
         exitButton.gameObject.SetActive(true);
-        GameManager.Instance.SetState(GameState.Cutscene);
+        GameManager.Instance.SetState(GameState.Inspecting);
 
         NormalizeScale(evt.Target);
 
@@ -70,12 +86,12 @@ public class ExamineController : MonoBehaviour
     }
     public void ExitExamineState()
     {
-        GameManager.Instance.SetState(GameState.Gameplay);
         examine = false;
         target.SetActive(false);
         exitButton.gameObject.SetActive(false);
         inspectingText.SetActive(false);
         EventsManager.Broadcast(new OnExamineObject { StartExamination = false });
+        GameManager.Instance.SetState(GameState.Gameplay);
 
     }
 }

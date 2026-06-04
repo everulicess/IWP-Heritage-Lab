@@ -4,7 +4,7 @@ public enum GameState
     Gameplay,
     Codex,
     Paused,
-    Cutscene,
+    Inspecting,
     Tutorial,
     Finished,
     WinningScreen
