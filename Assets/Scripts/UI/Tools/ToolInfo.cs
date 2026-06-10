@@ -12,6 +12,12 @@ public class ToolInfo : MonoBehaviour
     [SerializeField] Image toolBackground;
     [SerializeField] Image ToolImageHolder;
     [SerializeField] TextMeshProUGUI UITextHolder;
+
+    [Space]
+    [Header("Tool Slot States")]
+    [SerializeField] Sprite activeTool;
+    [SerializeField] Sprite inactiveTool;
+
     [Space]
     [Header("Tool UI Settings")]
     public PlayerToolsID toolID;
@@ -35,7 +41,6 @@ public class ToolInfo : MonoBehaviour
 
         if (toolBackground == null)
             Debug.LogError("MISSING TOOL UI PANEL REFERENCE IN INSPECTOR");
-        else
 
         if (ToolImageHolder == null)
             Debug.LogError("MISSING IMAGE HOLDER REFERENCE IN INSPECTOR");
@@ -50,11 +55,11 @@ public class ToolInfo : MonoBehaviour
 
      void ActivateTool(bool activate = true)
     {
-        toolBackground.color = activate ? Color.green : Color.white;
+        toolBackground.sprite = activate ? activeTool : inactiveTool;
     }
     private void UpdateUI(OnToolSelected evt)
     {
-            ActivateTool(toolID == evt.selectedTool);
+        ActivateTool(toolID == evt.selectedTool);
     }
 
 }

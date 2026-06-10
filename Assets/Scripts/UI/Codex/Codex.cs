@@ -24,6 +24,7 @@ public class Codex : MonoBehaviour
     [Header("Navigation")]
     [SerializeField] Button nextButton;
     [SerializeField] Button previousButton;
+    [SerializeField] GameObject closeButton;
 
     [Space]
     [Header("Input Display")]
@@ -46,6 +47,7 @@ public class Codex : MonoBehaviour
         InputManager.Instance.UI.PreviousPage.performed += ctx => OnPreviousPage();
 
         inputTextHolder.text = $"[{codexInput.action.GetBindingDisplayString()}]";
+        closeButton.SetActive(false);
 
     }
 
@@ -82,11 +84,13 @@ public class Codex : MonoBehaviour
     {
         pagesSection.SetActive(false);
         EventsManager.Broadcast(new OnCodexClosed());
+        closeButton.SetActive(false);
     }
 
     private void OpenCodex()
     {
         pagesSection.SetActive(true);
+        closeButton.SetActive(true);
     }
 
     void OnUnlockEntry(OnUnlockedEntry evt)
