@@ -14,6 +14,10 @@ public class PauseMenu : MonoBehaviour
     [Header("Controls Panel")]
     [SerializeField] GameObject controlsPanel;
     [SerializeField] Button closeControlsButton;
+    private void OnEnable()
+    {
+        controlsPanel.SetActive(false);
+    }
     private void Start()
     {
         if (resumeButton == null)
