@@ -13,25 +13,25 @@ public class InteractableNPC : MonoBehaviour
 
     private void Start()
     {
-        interactText.SetActive(false);
+        //interactText.SetActive(false);
         dialoguePanel.SetActive(false);
+        InputManager.Instance.UI.Spacebar.performed += ctx => CloseDialogue();
     }
 
-    private void Update()
-    {
-        if (playerNearby && !dialogueOpen && Input.GetKeyDown(KeyCode.E))
-        {
-            StartDialogue();
-        }
-    }
 
-    private void StartDialogue()
+
+    public void StartDialogue()
     {
+        if (dialogueOpen)
+            return;
+
+        GameManager.Instance.SetState(GameState.Inspecting);
+
         dialogueOpen = true;
 
         splineAnimate.Pause();
 
-        interactText.SetActive(false);
+        //interactText.SetActive(false);
         dialoguePanel.SetActive(true);
     }
 
@@ -41,25 +41,7 @@ public class InteractableNPC : MonoBehaviour
 
         dialoguePanel.SetActive(false);
         splineAnimate.Play();
+        GameManager.Instance.SetState(GameState.Gameplay);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = true;
-
-            if (!dialogueOpen)
-                interactText.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = false;
-            interactText.SetActive(false);
-        }
-    }
 }

@@ -426,6 +426,15 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Spacebar"",
+                    ""type"": ""Button"",
+                    ""id"": ""f95070cd-0393-4e44-b1b1-d49388048406"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -549,6 +558,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Examine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cafa31dc-5cd1-492e-9e4b-826641865acc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spacebar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -625,6 +645,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         m_UI_CloseMenu = m_UI.FindAction("Close Menu", throwIfNotFound: true);
         m_UI_SkipTutorial = m_UI.FindAction("Skip Tutorial", throwIfNotFound: true);
         m_UI_Examine = m_UI.FindAction("Examine", throwIfNotFound: true);
+        m_UI_Spacebar = m_UI.FindAction("Spacebar", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
@@ -914,6 +935,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_CloseMenu;
     private readonly InputAction m_UI_SkipTutorial;
     private readonly InputAction m_UI_Examine;
+    private readonly InputAction m_UI_Spacebar;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -957,6 +979,10 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Examine".
         /// </summary>
         public InputAction @Examine => m_Wrapper.m_UI_Examine;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Spacebar".
+        /// </summary>
+        public InputAction @Spacebar => m_Wrapper.m_UI_Spacebar;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1007,6 +1033,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Examine.started += instance.OnExamine;
             @Examine.performed += instance.OnExamine;
             @Examine.canceled += instance.OnExamine;
+            @Spacebar.started += instance.OnSpacebar;
+            @Spacebar.performed += instance.OnSpacebar;
+            @Spacebar.canceled += instance.OnSpacebar;
         }
 
         /// <summary>
@@ -1042,6 +1071,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Examine.started -= instance.OnExamine;
             @Examine.performed -= instance.OnExamine;
             @Examine.canceled -= instance.OnExamine;
+            @Spacebar.started -= instance.OnSpacebar;
+            @Spacebar.performed -= instance.OnSpacebar;
+            @Spacebar.canceled -= instance.OnSpacebar;
         }
 
         /// <summary>
@@ -1323,6 +1355,13 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnExamine(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spacebar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpacebar(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Global" which allows adding and removing callbacks.
