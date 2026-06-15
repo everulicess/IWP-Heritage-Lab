@@ -218,6 +218,14 @@ PrefabInstance:
       propertyPath: OnInteraction.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 812849595612498047, guid: f85f80c3947286b40ab698070a759454, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578206660385680755, guid: f85f80c3947286b40ab698070a759454, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6682293969192243624, guid: f85f80c3947286b40ab698070a759454, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1783,6 +1791,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 739297060367767055, guid: d11470241c245de48af402b80626560e, type: 3}
   m_PrefabInstance: {fileID: 631114018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &486316878 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1791760353995781714, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+  m_PrefabInstance: {fileID: 7889541422137121095}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &489703961 stripped
 GameObject:
@@ -10347,7 +10360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3220180472742520567, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: m_fontSize
-      value: 31.2
+      value: 28.85
       objectReference: {fileID: 0}
     - target: {fileID: 3220180472742520567, guid: 435776597e88ab04288dd9456139d6e4, type: 3}
       propertyPath: m_fontAsset
@@ -11141,12 +11154,16 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9a6f3fb436de3804aba7da12aaf48f19, type: 3}
     - target: {fileID: 1195690872956518419, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: m_Cameras.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1195690872956518419, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 778045982}
+    - target: {fileID: 1195690872956518419, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
+      propertyPath: 'm_Cameras.Array.data[1]'
+      value: 
+      objectReference: {fileID: 486316878}
     - target: {fileID: 1531146348374844988, guid: 29e3e010f44aa784a86ecbb20b41d2cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21550348
