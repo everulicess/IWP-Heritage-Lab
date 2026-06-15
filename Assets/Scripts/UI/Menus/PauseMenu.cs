@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -50,11 +48,12 @@ public class PauseMenu : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-        Application.OpenURL(webplayerQuitURL);
+#elif UNITY_WEBGL
+    // Reload page to effectively "quit"
+    Application.ExternalEval("location.reload();");
 #else
-        Application.Quit();
-# endif
+    Application.Quit();
+#endif
     }
 
     private void GoToMainMenu()
