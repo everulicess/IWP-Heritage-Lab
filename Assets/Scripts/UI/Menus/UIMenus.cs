@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIMenus : MonoBehaviour
@@ -51,13 +52,7 @@ public class UIMenus : MonoBehaviour
     }
     private void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-        Application.OpenURL(webplayerQuitURL);
-#else
-        Application.Quit();
-# endif
+        SceneManager.LoadScene(0);
     }
     private void UpdateUseTools(OnExamineObject evt)
     {

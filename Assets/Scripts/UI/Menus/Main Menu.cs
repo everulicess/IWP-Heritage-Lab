@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,9 +9,15 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button controlsButton;
     [SerializeField] Button exitButton;
+    [SerializeField] Button CreditsButton;
+    [Space]
     [Header("Controls")]
     [SerializeField] GameObject controlsPanel;
     [SerializeField] Button CloseControlsPanelButton;
+    [Space]
+    [Header("Credits")]
+    [SerializeField] GameObject creditsPanel;
+    [SerializeField] Button CloseCreditsPanelButton;
     
 
 
@@ -42,7 +49,27 @@ public class MainMenu : MonoBehaviour
         else
             CloseControlsPanelButton.onClick.AddListener(ToggleControls);
 
+        if (creditsPanel == null)
+            Debug.LogError($"Credits Panel has not been assigned to {this.gameObject}");
+        else
+            creditsPanel.SetActive(false);
+
+        if (CloseCreditsPanelButton == null)
+            Debug.LogError($"Close Controls Button has not been assigned to {this.gameObject}");
+        else
+            CloseCreditsPanelButton.onClick.AddListener(ToggleCredits);
+
+        if (CreditsButton == null)
+            Debug.LogError($"Controls Button has not been assigned to {this.gameObject}");
+        else
+            CreditsButton.onClick.AddListener(ToggleCredits);
     }
+
+    private void ToggleCredits()
+    {
+        creditsPanel.SetActive(!creditsPanel.activeInHierarchy);
+    }
+
     void StartGame()
     {
         SceneManager.LoadSceneAsync(1,LoadSceneMode.Single);
