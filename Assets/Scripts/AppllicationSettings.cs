@@ -6,8 +6,8 @@ public class AppllicationSettings : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = _targetFrameRate;
-        QualitySettings.vSyncCount = 0; // Must be 0, otherwise targetFrameRate is ignored
+        //Application.targetFrameRate = _targetFrameRate;
+        //QualitySettings.vSyncCount = 0; // Must be 0, otherwise targetFrameRate is ignored
         DontDestroyOnLoad(this);
     }
     private float _deltaTime;
